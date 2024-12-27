@@ -1,0 +1,343 @@
+<!doctype html><html lang=zh-cn dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content="一些python的基础语法"><title>python基础2</title>
+<link rel=canonical href=https://xx88cc66.github.io/p/python%E5%9F%BA%E7%A1%802/><link rel=stylesheet href=/scss/style.min.0304c6baf04e01a8fe70693791cb744d56a3578a3120a8796cefc66825aa39c7.css><meta property='og:title' content="python基础2"><meta property='og:description' content="一些python的基础语法"><meta property='og:url' content='https://xx88cc66.github.io/p/python%E5%9F%BA%E7%A1%802/'><meta property='og:site_name' content='kenny博客'><meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:published_time' content='2024-12-27T00:00:00+00:00'><meta property='article:modified_time' content='2024-12-27T00:00:00+00:00'><meta name=twitter:title content="python基础2"><meta name=twitter:description content="一些python的基础语法"><link rel="shortcut icon" href=/favicon.ico></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/><img src=/img/avatar_hua6c5818587166f8e6919483d3d27bed0_31768_300x0_resize_box_3.png width=300 height=300 class=site-logo loading=lazy alt=Avatar>
+</a><span class=emoji>🍥</span></figure><div class=site-meta><h1 class=site-name><a href=/>kenny博客</a></h1><h2 class=site-description>欢迎来到我的博客</h2></div></header><ol class=menu-social><li><a href=https://qm.qq.com/q/5yeSVztts target=_blank title=QQ rel=me><svg height="32" viewBox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="m0 0h32v32H0z"/><path d="m15.9998867.0-.3175962.00373031C8.84822.16478688 5.08430177 5.52571032 5.05900841 13.1032973L5.06 13.376l-.86256398 2.1053645c-.34339269.8459887-.59479858 1.4918602-.8236549 2.1249911-.16246446.4494579-.31092035.8862129-.4515632 1.3302912-1.41043336 4.4529342-1.46997142 7.7313526 1.14979123 8.0424546l.19586827.0182568c.69853306.0462522 1.18775172-.1357889 1.69345756-.5695745L6.008 26.385l.10703497.1859114.16295747.2641667L6.368 26.972l-.10203891.0725127c-1.18457469.8599516-1.78515849 2.0422997-.8749963 3.5478041.72014893 1.1919865 1.68579016 1.3851809 4.67654251 1.4059241h1.2781117l.7210113-.0101194c1.4578857-.0287327 2.9764342-.1065736 3.9343697-.2001215l.2555297.0243167c1.1291243.09698 2.8606159.1735357 4.3993902.1859242h1.2781118c2.9907546-.0207471 3.95642-.2139816 4.6768437-1.4064227l.0983227-.1723424c.764361-1.4241985.1648309-2.548721-.9747412-3.3755348L25.631 26.971l.0912293-.1362605.1629318-.2641511L25.992 26.385l.0466679.0427821c.5516504.4732059 1.0836451.6468525 1.8890001.5513616 2.6200145-.3116105 2.5604594-3.5895097 1.1502083-8.0424822-.136678-.4315245-.2810058-.8567817-.4385987-1.2939849l-.1781698-.4846461c-.0923296-.2464665-.1903348-.5013359-.2976536-.7744519l-.3954267-.9868956L26.939 13.376l9399e-7-.279262c-.038761-7.60576089-3.8169423-12.93053326-10.6187985-13.09291824zm1023e-7 2c6.339972 32813e-8 9.0947051 5.25726658 8.9334981 11.7557738l.8516442 2.0748544c.5606846 1.3708665.9939584 2.4718584 1.3860782 3.7098724 1.2134003 3.8314013.8203049 5.4169539.5209683 5.4525554-.6424867.0761796-2.5006035-2.8842697-2.5006035-2.8842697.0 1.7141775-.8994592 3.9510027-2.8457046 5.5664147l.3377045.1073023c1.0249215.341207 2.6653848 1.0302704 2.2154641 1.7750936-.4078113.675007-6.9962271.4309917-8.8982689.2207732l-.4753503.0452169c-2.33636.195172-8.04423656.3608021-8.42291849-.2659901-.50418989-.8339832 1.61195836-1.5976385 2.55205373-1.8820678-1.94652419-1.615412-2.84615056-3.852456-2.84615056-5.5667428l-.32111727.4924567c-.56063792.838483-1.70355568 2.4482423-2.17943051 2.391813-.29933663-.0355468-.69254342-1.6211541.52102408-5.4525554l.21887662-.6654718c.52220361-1.5311231 1.13363576-2.9515889 2.01884579-5.1193097C6.8963095 7.36281332 9.58861109 2.00032813 15.999989 2z" fill="#000" fill-rule="nonzero"/></g></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>主页</span></a></li><li><a href=/%E5%85%B3%E4%BA%8E/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
+<span>关于</span></a></li><li><a href=/archives/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>归档</span></a></li><li><a href=/search/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg>
+<span>搜索</span></a></li><li class=menu-bottom-section><ol class=menu><li id=dark-mode-toggle><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>暗色模式</span></li></ol></li></ol></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><div class=article-title-wrapper><h2 class=article-title><a href=/p/python%E5%9F%BA%E7%A1%802/>python基础2</a></h2><h3 class=article-subtitle>一些python的基础语法</h3></div><footer class=article-time><div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published>2024-12-27</time></div><div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<time class=article-time--reading>阅读时长: 7 分钟</time></div></footer></div></header><section class=article-content><p>强制类型转换</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>def</span> <span class=nf>poc</span><span class=p>(</span><span class=n>url</span><span class=p>,</span><span class=n>bugtype</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>url</span> <span class=o>==</span> <span class=s1>&#39;&#39;</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=s1>&#39;URL不能为空&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=n>exit</span><span class=p>()</span><span class=c1>#结束脚本运行</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>bugtype</span> <span class=o>==</span> <span class=s1>&#39;shiro&#39;</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s1>&#39;shiro漏洞  URL</span><span class=si>{</span><span class=n>url</span><span class=si>}</span><span class=s1>&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>bugtype</span> <span class=o>==</span> <span class=s1>&#39;dahua&#39;</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s1>&#39;dahua漏洞  URL</span><span class=si>{</span><span class=n>url</span><span class=si>}</span><span class=s1>&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>bugtype</span> <span class=o>==</span> <span class=s1>&#39;thinkphp&#39;</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s1>&#39;thinkphp漏洞  URL</span><span class=si>{</span><span class=n>url</span><span class=si>}</span><span class=s1>&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>msg</span> <span class=o>=</span> <span class=nb>input</span><span class=p>(</span><span class=s1>&#39;请输入URL 指定漏洞 空格分割：&#39;</span><span class=p>)</span><span class=o>.</span><span class=n>split</span><span class=p>(</span><span class=s1>&#39; &#39;</span><span class=p>)</span><span class=c1>#split是分割函数将此变成列表</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>poc</span><span class=p>(</span><span class=n>url</span><span class=o>=</span><span class=n>msg</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span><span class=o>.</span><span class=n>lower</span><span class=p>(),</span><span class=n>bugtype</span><span class=o>=</span><span class=n>msg</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span><span class=o>.</span><span class=n>lower</span><span class=p>())</span><span class=c1>#.lower()强制转换为小写</span>
+</span></span></code></pre></td></tr></table></div></div><p>面向对象</p><p><font style=color:#000>面向过程和面向对象</font></p><p><font style=color:#000>• </font><font style=color:#000>面向过程</font></p><p><font style=color:#000>• </font><font style=color:#000>面向对象</font></p><p><font style=color:#000>面向对象 3 大特性</font></p><p><font style=color:#000>• </font><font style=color:#000>封装：将数据和揍作数据的方法封装在一起，形成一个对象，隐藏对象的傅部实现细节，</font></p><p><font style=color:#000>只暴露必要的接口。</font></p><p><font style=color:#000>• </font><font style=color:#000>继承：可以从已有的类中派生出新的类，新的类可以继承已有类的属性和方法，并可以添</font></p><p><font style=color:#000>加新的属性和方法。</font></p><p><font style=color:#000>多态：同一个方法可以在不同的对象上产生不同的行为，这种特性称为多态。多态可以通</font></p><p><font style=color:#000>过继承、接口、重载等方式实现。</font></p><p><font style=color:#000>什么是类：</font></p><p><font style=color:#000>什么是属性：</font></p><p><font style=color:#000>什么是方法：</font></p><p><font style=color:#000>类和方法、属性、对象的偳系</font></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>class</span> <span class=nc>Student</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span><span class=c1>#魔术方法</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>name</span> <span class=o>=</span> <span class=s1>&#39;张三&#39;</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>nianl</span> <span class=o>=</span> <span class=mi>19</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>tw</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span><span class=c1>#self是类本身 不加调用不了上面的变量</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>name</span><span class=p>,</span><span class=s1>&#39;会跳舞&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>cg</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>name</span><span class=p>,</span><span class=s1>&#39;会唱歌&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>stu</span> <span class=o>=</span> <span class=n>Student</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>stu</span><span class=o>.</span><span class=n>name</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>stu</span><span class=o>.</span><span class=n>tw</span><span class=p>()</span>
+</span></span></code></pre></td></tr></table></div></div><p>封装</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>class</span> <span class=nc>Student</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=n>name</span> <span class=o>=</span> <span class=s1>&#39;张三&#39;</span>
+</span></span><span class=line><span class=cl>    <span class=n>idcard</span> <span class=o>=</span> <span class=s1>&#39;123asdadad&#39;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>__tw</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span><span class=c1>#封装方法在前面加__外部无法访问</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>name</span><span class=p>,</span><span class=s1>&#39;会跳舞&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>cg</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>name</span><span class=p>,</span><span class=s1>&#39;会唱歌&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>__tw</span><span class=p>())</span><span class=c1>#公有方法调用私有的方法</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>stu</span> <span class=o>=</span> <span class=n>Student</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>stu</span><span class=o>.</span><span class=n>cg</span><span class=p>())</span> 
+</span></span></code></pre></td></tr></table></div></div><p>继承</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>class</span> <span class=nc>Shifu</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=n>jineng</span> <span class=o>=</span> <span class=s1>&#39;渗透测试&#39;</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>work</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=s1>&#39;做web渗透测试&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Tudi</span><span class=p>(</span><span class=n>Shifu</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>work</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=s1>&#39;师傅会做代码审计&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>td</span> <span class=o>=</span> <span class=n>Tudi</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>td</span><span class=o>.</span><span class=n>work</span><span class=p>())</span>
+</span></span></code></pre></td></tr></table></div></div><p>多态</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>class</span> <span class=nc>Dongwu</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>eat</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=s1>&#39;动物要吃东西&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Dog</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>eat</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=s1>&#39;狗要吃肉&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Person</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>eat</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=s1>&#39;人要吃饭&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>fun</span><span class=p>(</span><span class=bp>cls</span><span class=p>):</span><span class=c1>#定义一个函数来处理</span>
+</span></span><span class=line><span class=cl>    <span class=bp>cls</span><span class=o>.</span><span class=n>eat</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>fun</span><span class=p>(</span><span class=n>Person</span><span class=p>())</span>
+</span></span></code></pre></td></tr></table></div></div><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>class</span> <span class=nc>Person</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=n>nl</span> <span class=o>=</span> <span class=mi>12</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>Person</span><span class=o>.</span><span class=n>nl</span> <span class=o>=</span> <span class=mi>22</span>
+</span></span><span class=line><span class=cl><span class=n>ren</span> <span class=o>=</span> <span class=n>Person</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>ren</span><span class=o>.</span><span class=n>nl</span><span class=p>)</span>
+</span></span></code></pre></td></tr></table></div></div><p>文件处理</p><p><font style=color:#000>普通文件</font></p><p><font style=color:#000>Python open() 方法用于打开一个文件，并返回文件对象，在对文件进行处理过程都需要使用</font></p><p><font style=color:#000>到这个函数，如果该文件无法被打开，会抛出 OSError。</font></p><p><font style=color:#000>使用 open() 方法一定要保证偳闭文件对象，即调用 close() 方法。</font></p><p><font style=color:#000>open() 函数常用形式是接收两个参数：文件名(file)和模式(mode)</font></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>t</span> <span class=n>文本模式</span> <span class=p>(</span><span class=n>默认</span><span class=p>)</span><span class=err>。</span>
+</span></span><span class=line><span class=cl><span class=n>x</span> <span class=n>備模式</span><span class=err>，</span><span class=n>新建一个文件</span><span class=err>，</span><span class=n>如果该文件已存在则会报错</span><span class=err>。</span>
+</span></span><span class=line><span class=cl><span class=n>b</span> <span class=n>二进制模式</span><span class=err>。</span>
+</span></span><span class=line><span class=cl><span class=o>+</span> <span class=n>打开一个文件进行更新</span><span class=p>(</span><span class=n>可读可備</span><span class=p>)</span><span class=err>。</span>
+</span></span><span class=line><span class=cl><span class=n>U</span> <span class=n>通用换行模式</span><span class=err>（</span><span class=n>不推荐</span><span class=err>）。</span>
+</span></span><span class=line><span class=cl><span class=n>r</span> <span class=n>以只读方式打开文件</span><span class=err>。</span><span class=n>文件的指针将会放在文件的开头</span><span class=err>。</span><span class=n>这是默认模式</span><span class=err>。</span>
+</span></span><span class=line><span class=cl><span class=n>rb</span> <span class=n>以二进制格式打开一个文件用于只读</span><span class=err>。</span><span class=n>文件指针将会放在文件的开头</span><span class=err>。</span><span class=n>这是默认模式</span><span class=err>。</span><span class=n>一般用于非</span>
+</span></span><span class=line><span class=cl><span class=n>文本文件如图片等</span><span class=err>。</span>
+</span></span><span class=line><span class=cl><span class=n>r</span><span class=o>+</span> <span class=n>打开一个文件用于读備</span><span class=err>。</span><span class=n>文件指针将会放在文件的开头</span><span class=err>。</span>
+</span></span><span class=line><span class=cl><span class=n>rb</span><span class=o>+</span> <span class=n>以二进制格式打开一个文件用于读備</span><span class=err>。</span><span class=n>文件指针将会放在文件的开头</span><span class=err>。</span><span class=n>一般用于非文本文件如图片</span>
+</span></span><span class=line><span class=cl><span class=n>等</span><span class=err>。</span>
+</span></span><span class=line><span class=cl><span class=n>w</span> <span class=n>打开一个文件只用于備健</span><span class=err>。</span><span class=n>如果该文件已存在则打开文件</span><span class=err>，</span><span class=n>并从开头开始编辑</span><span class=err>，</span><span class=n>即原有傅容会被删</span>
+</span></span><span class=line><span class=cl><span class=n>除</span><span class=err>。</span><span class=n>如果该文件不存在</span><span class=err>，</span><span class=n>创建新文件</span><span class=err>。</span>
+</span></span><span class=line><span class=cl><span class=n>wb</span> <span class=n>以二进制格式打开一个文件只用于備健</span><span class=err>。</span><span class=n>如果该文件已存在则打开文件</span><span class=err>，</span><span class=n>并从开头开始编辑</span><span class=err>，</span><span class=n>即原</span>
+</span></span><span class=line><span class=cl><span class=n>有傅容会被删除</span><span class=err>。</span><span class=n>如果该文件不存在</span><span class=err>，</span><span class=n>创建新文件</span><span class=err>。</span><span class=n>一般用于非文本文件如图片等</span><span class=err>。</span>
+</span></span><span class=line><span class=cl><span class=n>w</span><span class=o>+</span> <span class=n>打开一个文件用于读備</span><span class=err>。</span><span class=n>如果该文件已存在则打开文件</span><span class=err>，</span><span class=n>并从开头开始编辑</span><span class=err>，</span><span class=n>即原有傅容会被删</span>
+</span></span><span class=line><span class=cl><span class=n>除</span><span class=err>。</span><span class=n>如果该文件不存在</span><span class=err>，</span><span class=n>创建新文件</span><span class=err>。</span>
+</span></span><span class=line><span class=cl><span class=n>wb</span><span class=o>+</span> <span class=n>以二进制格式打开一个文件用于读備</span><span class=err>。</span><span class=n>如果该文件已存在则打开文件</span><span class=err>，</span><span class=n>并从开头开始编辑</span><span class=err>，</span><span class=n>即原有</span>
+</span></span><span class=line><span class=cl><span class=n>傅容会被删除</span><span class=err>。</span><span class=n>如果该文件不存在</span><span class=err>，</span><span class=n>创建新文件</span><span class=err>。</span><span class=n>一般用于非文本文件如图片等</span><span class=err>。</span>
+</span></span><span class=line><span class=cl><span class=n>a</span> <span class=n>打开一个文件用于追加</span><span class=err>。</span><span class=n>如果该文件已存在</span><span class=err>，</span><span class=n>文件指针将会放在文件的结尾</span><span class=err>。</span><span class=n>也就是说</span><span class=err>，</span><span class=n>新的傅容</span>
+</span></span><span class=line><span class=cl><span class=n>将会被備健到已有傅容之后</span><span class=err>。</span><span class=n>如果该文件不存在</span><span class=err>，</span><span class=n>创建新文件进行備健</span><span class=err>。</span>
+</span></span><span class=line><span class=cl><span class=n>ab</span> <span class=n>以二进制格式打开一个文件用于追加</span><span class=err>。</span><span class=n>如果该文件已存在</span><span class=err>，</span><span class=n>文件指针将会放在文件的结尾</span><span class=err>。</span><span class=n>也就是</span>
+</span></span><span class=line><span class=cl><span class=n>说</span><span class=err>，</span><span class=n>新的傅容将会被備健到已有傅容之后</span><span class=err>。</span><span class=n>如果该文件不存在</span><span class=err>，</span><span class=n>创建新文件进行備健</span><span class=err>。</span>
+</span></span><span class=line><span class=cl><span class=n>a</span><span class=o>+</span> <span class=n>打开一个文件用于读備</span><span class=err>。</span><span class=n>如果该文件已存在</span><span class=err>，</span><span class=n>文件指针将会放在文件的结尾</span><span class=err>。</span><span class=n>文件打开时会是追加</span>
+</span></span><span class=line><span class=cl><span class=n>模式</span><span class=err>。</span><span class=n>如果该文件不存在</span><span class=err>，</span><span class=n>创建新文件用于读備</span><span class=err>。</span>
+</span></span><span class=line><span class=cl><span class=n>ab</span><span class=o>+</span> <span class=n>以二进制格式打开一个文件用于追加</span><span class=err>。</span><span class=n>如果该文件已存在</span><span class=err>，</span><span class=n>文件指针将会放在文件的结尾</span><span class=err>。</span><span class=n>如果该</span>
+</span></span><span class=line><span class=cl><span class=n>文件不存在</span><span class=err>，</span><span class=n>创建新文件用于读備</span>
+</span></span></code></pre></td></tr></table></div></div><p><font style=color:#333>参数说明:</font></p><p><font style=color:#000>• file: 必需，文件路径（相对或者绝对路径）。</font></p><p><font style=color:#000>• mode: 可选，文件打开模式</font></p><p><font style=color:#000>• </font><font style=color:#000>buffering: 设置缓傲</font></p><p><font style=color:#000>• </font><font style=color:#000>encoding: 一般使用 utf8</font></p><p><font style=color:#000>• </font><font style=color:#000>errors: 报错级别</font></p><p><font style=color:#000>• </font><font style=color:#000>newline: 区分换行符</font></p><p><font style=color:#000>• </font><font style=color:#000>closefd: 传健的 file 参数类型</font></p><p><font style=color:#000>• </font><font style=color:#000>opener: 设置自定义开启器，开启器的返回值必须是一个打开的文件描述符。</font></p><p><font style=color:#000>file 对象</font></p><p><font style=color:#000>file.close()</font></p><p><font style=color:#000>file.read([size])</font></p><p><font style=color:#000>file.readline([size])</font></p><p><font style=color:#000>file.readlines([sizeint])</font></p><p><font style=color:#000>file.write(str)</font></p><p><font style=color:#000>上下文管理器：</font></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>fi</span> <span class=o>=</span> <span class=nb>open</span><span class=p>(</span><span class=s1>&#39;1111.txt&#39;</span><span class=p>,</span><span class=s1>&#39;r&#39;</span><span class=p>,</span><span class=n>encoding</span><span class=o>=</span><span class=s1>&#39;utf-8&#39;</span><span class=p>)</span><span class=o>.</span><span class=n>readline</span><span class=p>()</span><span class=c1>#以列表的形式读取</span>
+</span></span><span class=line><span class=cl><span class=k>for</span> <span class=n>i</span> <span class=ow>in</span> <span class=n>fi</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=nb>print</span><span class=p>(</span><span class=n>i</span><span class=o>.</span><span class=n>replace</span><span class=p>(</span><span class=s1>&#39;</span><span class=se>\n</span><span class=s1>&#39;</span><span class=p>,</span><span class=s1>&#39;&#39;</span><span class=p>))</span><span class=c1>#replace替换</span>
+</span></span><span class=line><span class=cl>    <span class=n>fi</span><span class=o>.</span><span class=n>close</span><span class=p>()</span><span class=c1>#读完关闭</span>
+</span></span></code></pre></td></tr></table></div></div><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>fi</span> <span class=o>=</span> <span class=nb>open</span><span class=p>(</span><span class=s1>&#39;1111.txt&#39;</span><span class=p>,</span><span class=s1>&#39;r&#39;</span><span class=p>,</span><span class=n>encoding</span><span class=o>=</span><span class=s1>&#39;utf-8&#39;</span><span class=p>)</span><span class=o>.</span><span class=n>read</span><span class=p>(</span><span class=mi>3</span><span class=p>)</span><span class=c1>#读取多少个字节</span>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>fi</span><span class=p>)</span>
+</span></span></code></pre></td></tr></table></div></div><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>fi</span> <span class=o>=</span> <span class=nb>open</span><span class=p>(</span><span class=s1>&#39;1111.txt&#39;</span><span class=p>,</span><span class=s1>&#39;a&#39;</span><span class=p>,</span><span class=n>encoding</span><span class=o>=</span><span class=s1>&#39;utf-8&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>fi</span><span class=o>.</span><span class=n>write</span><span class=p>(</span><span class=s1>&#39;aaaaaaaaaaaaaaaaaa&#39;</span><span class=p>)</span><span class=c1>#写入</span>
+</span></span></code></pre></td></tr></table></div></div><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>with</span> <span class=nb>open</span><span class=p>(</span><span class=s1>&#39;test.txt&#39;</span><span class=p>,</span><span class=s1>&#39;a&#39;</span><span class=p>,</span><span class=n>encoding</span><span class=o>=</span><span class=s1>&#39;utf-8&#39;</span><span class=p>)</span> <span class=k>as</span> <span class=n>f</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>f</span><span class=o>.</span><span class=n>write</span><span class=p>(</span><span class=s1>&#39;测试上下文管理器写入&#39;</span><span class=p>)</span>
+</span></span></code></pre></td></tr></table></div></div><p><strong><font style=color:#000>异常处理</font></strong></p><p><font style=color:#000>默认情債下，当一个程序发生异常时，程序会终止退出。如果要避偍程序退出，可以使用捕获</font></p><p><font style=color:#000>异常的方式获取这个异常的名称，傍通过偶他的逻辑代码让程序继续运行，这种根据异常做出</font></p><p><font style=color:#000>的逻辑处理叫作异常处理。</font></p><p><font style=color:#000>理解：</font></p><p><font style=color:#000>当某些代码可能会出错时，就可以用 try 来运行这段代码，如果执行出现异常，系统就会自动</font></p><p><font style=color:#000>生成一个异常类型，然后在 except 中寻找能够处理该异常类型的代码块，处理完异常后就继</font></p><p><font style=color:#000>续执行 try&mldr;except&mldr;后面的代码；一旦在 except 中殡有找到合适的的 except 代码块来处理异常，那么程序就会终止退出，所以一般都会使用 except [Exception] 来处理那些未知的异常，以保证程序不会终止退出。</font></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=c1># try:</span>
+</span></span><span class=line><span class=cl><span class=c1>#     fi = open(&#39;asd.txt&#39;, &#39;r&#39;).read()</span>
+</span></span><span class=line><span class=cl><span class=c1>#     print(fi)</span>
+</span></span><span class=line><span class=cl><span class=c1># except:</span>
+</span></span><span class=line><span class=cl><span class=c1>#     print(&#39;文件不存在&#39;)#读取了一个不存在的文件用try抑制他的报错</span>
+</span></span></code></pre></td></tr></table></div></div><p><strong><font style=color:#000>break</font></strong></p><p><font style=color:#000>终止循环</font></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=c1># for i in [1,2,3,4,5,6,7,8,9]:</span>
+</span></span><span class=line><span class=cl><span class=c1>#     if i == 3:</span>
+</span></span><span class=line><span class=cl><span class=c1>#         break</span>
+</span></span><span class=line><span class=cl><span class=c1>#     else:</span>
+</span></span><span class=line><span class=cl><span class=c1>#         print(i)</span>
+</span></span></code></pre></td></tr></table></div></div><p><strong><font style=color:#000>continue</font></strong></p><p><font style=color:#000>跳出本次循环，继续下次循环</font></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=c1># for i in [1,2,3,4,5,6,7,8,9]:</span>
+</span></span><span class=line><span class=cl><span class=c1>#     if i == 3:</span>
+</span></span><span class=line><span class=cl><span class=c1>#         continue</span>
+</span></span><span class=line><span class=cl><span class=c1>#     else:</span>
+</span></span><span class=line><span class=cl><span class=c1>#         print(i)</span>
+</span></span></code></pre></td></tr></table></div></div><p><strong><font style=color:#000>字符串揍作</font></strong></p><p><font style=color:#000>字符串切片</font></p><p><font style=color:#000>[:5]</font></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=nb>str</span> <span class=o>=</span> <span class=s1>&#39;112udh.7237hs&#39;</span>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=nb>str</span><span class=p>[</span><span class=o>-</span><span class=mi>4</span><span class=p>])</span>
+</span></span></code></pre></td></tr></table></div></div><p><font style=color:#000>字符串查找</font></p><p><font style=color:#000>find</font></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=nb>str</span> <span class=o>=</span> <span class=p>(</span><span class=s1>&#39;http://baidu.com&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=nb>str</span><span class=o>.</span><span class=n>find</span><span class=p>(</span><span class=s1>&#39;https&#39;</span><span class=p>)</span> <span class=o>!=</span> <span class=o>-</span><span class=mi>1</span><span class=p>:</span><span class=c1>#-1的意思 一般查到都会返回字符串所在的位置 一般不会等于-1</span>
+</span></span><span class=line><span class=cl>  <span class=nb>print</span><span class=p>(</span><span class=s1>&#39;https协议&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=k>else</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=nb>print</span><span class=p>(</span><span class=s1>&#39;http协议&#39;</span><span class=p>)</span>
+</span></span></code></pre></td></tr></table></div></div><p><font style=color:#000>字符串替换</font></p><p><font style=color:#000>replace</font></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>st</span> <span class=o>=</span> <span class=s1>&#39;http://baidu.com&#39;</span>
+</span></span><span class=line><span class=cl><span class=c1>#print(st.find(&#39;baidu&#39;))</span>
+</span></span><span class=line><span class=cl><span class=n>st1</span> <span class=o>=</span> <span class=n>st</span><span class=o>.</span><span class=n>replace</span><span class=p>(</span><span class=s1>&#39;http&#39;</span><span class=p>,</span><span class=s1>&#39;https&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>st1</span><span class=p>)</span>
+</span></span></code></pre></td></tr></table></div></div><p><font style=color:#000>字符串拆分</font></p><p><font style=color:#000>split</font></p><p><font style=color:#000>字符串连接</font></p><p><font style=color:#000>join</font></p><p><strong><font style=color:#000>列表推导式</font></strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=c1># for i in range(5):</span>
+</span></span><span class=line><span class=cl><span class=c1>#     if i % 3 == 0:</span>
+</span></span><span class=line><span class=cl><span class=c1>#         print(i)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>res</span> <span class=o>=</span> <span class=p>[</span><span class=n>i</span> <span class=k>for</span> <span class=n>i</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=mi>5</span><span class=p>)</span> <span class=k>if</span> <span class=n>i</span> <span class=o>%</span> <span class=mi>3</span> <span class=o>==</span> <span class=mi>0</span><span class=p>]</span>
+</span></span><span class=line><span class=cl><span class=c1># print(res)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>a</span> <span class=o>=</span> <span class=p>[[</span><span class=n>x</span><span class=p>,</span><span class=n>y</span><span class=p>]</span> <span class=k>for</span> <span class=n>x</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=mi>5</span><span class=p>)</span> <span class=k>if</span> <span class=n>x</span> <span class=o>%</span> <span class=mi>2</span> <span class=o>==</span> <span class=mi>0</span> <span class=k>for</span> <span class=n>y</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=mi>5</span><span class=p>)</span> <span class=k>if</span> <span class=n>y</span> <span class=o>%</span> <span class=mi>2</span> <span class=o>==</span> <span class=mi>1</span><span class=p>]</span>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>a</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>for</span> <span class=n>x</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=mi>5</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>x</span> <span class=o>%</span> <span class=mi>2</span> <span class=o>==</span> <span class=mi>0</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=n>x</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=k>for</span> <span class=n>y</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=mi>5</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>y</span> <span class=o>%</span> <span class=mi>2</span> <span class=o>==</span> <span class=mi>1</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=n>y</span><span class=p>)</span>
+</span></span></code></pre></td></tr></table></div></div></section><footer class=article-footer><section class=article-copyright><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg>
+<span>Licensed under CC BY-NC-SA 4.0</span></section></footer><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css integrity=sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV crossorigin=anonymous><script src=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js integrity=sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8 crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js integrity=sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05 crossorigin=anonymous defer></script><script>window.addEventListener("DOMContentLoaded",()=>{renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],ignoredClasses:["gist"]})})</script></article><div class=disqus-container><div id=disqus_thread></div><script>window.disqus_config=function(){},function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById("disqus_thread").innerHTML="Disqus comments not available by default when the website is previewed locally.";return}var t=document,e=t.createElement("script");e.async=!0,e.src="//hugo-theme-stack.disqus.com/embed.js",e.setAttribute("data-timestamp",+new Date),(t.head||t.body).appendChild(e)}()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a></div><style>.disqus-container{background-color:var(--card-background);border-radius:var(--card-border-radius);box-shadow:var(--shadow-l1);padding:var(--card-padding)}</style><script>window.addEventListener("onColorSchemeChange",e=>{typeof DISQUS=="object"&&DISQUS.reset({reload:!0})})</script><footer class=site-footer><section class=copyright>&copy;
+2024 kenny博客</section><section class=powerby>使用 <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> 构建<br>主题 <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=3.26.0>Stack</a></b> 由 <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a> 设计</section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.js defer></script><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></body></html>
