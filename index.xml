@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>kenny博客</title><link>https://xx88cc66.github.io/</link><description>Recent content on kenny博客</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>kenny博客</copyright><lastBuildDate>Fri, 27 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://xx88cc66.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>http基础</title><link>https://xx88cc66.github.io/p/http%E5%9F%BA%E7%A1%80/</link><pubDate>Fri, 27 Dec 2024 00:00:00 +0000</pubDate><guid>https://xx88cc66.github.io/p/http%E5%9F%BA%E7%A1%80/</guid><description>&lt;h3 id="0x00">0x00
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>kenny博客</title><link>https://xx88cc66.github.io/</link><description>Recent content on kenny博客</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>kenny博客</copyright><lastBuildDate>Sat, 28 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://xx88cc66.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>http基础</title><link>https://xx88cc66.github.io/p/http%E5%9F%BA%E7%A1%80/</link><pubDate>Sat, 28 Dec 2024 00:00:00 +0000</pubDate><guid>https://xx88cc66.github.io/p/http%E5%9F%BA%E7%A1%80/</guid><description>&lt;h3 id="0x00">0x00
 &lt;/h3>&lt;p>原理：浏览器跟服务器交流的语言//服务器之间的协议&lt;/p>
 &lt;p>http是一个无状态的协议 所有的请求都是独立的（为了维持用户登录状态则需要cookie或session等等）&lt;/p>
 &lt;p>&lt;img src="https://xx88cc66.github.io/images/http/1.png"
@@ -67,7 +67,81 @@ loading="lazy"
 &lt;/ul>
 &lt;/li>
 &lt;/ol>
-&lt;p>这些状态码帮助客户端和服务器之间进行有效的通信，确保网络请求和响应能够被正确地理解和处理&lt;/p></description></item><item><title>python基础1</title><link>https://xx88cc66.github.io/p/python%E5%9F%BA%E7%A1%801/</link><pubDate>Fri, 27 Dec 2024 00:00:00 +0000</pubDate><guid>https://xx88cc66.github.io/p/python%E5%9F%BA%E7%A1%801/</guid><description>&lt;p>&lt;strong>&lt;font style="color:rgb(0,0,0);">基础语法 &lt;/font>&lt;/strong>&lt;/p>
+&lt;p>这些状态码帮助客户端和服务器之间进行有效的通信，确保网络请求和响应能够被正确地理解和处理&lt;/p></description></item><item><title>信息收集dnsx、nabbu,asnamp,mapcidr使用</title><link>https://xx88cc66.github.io/p/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86dnsxnabbuasnampmapcidr%E4%BD%BF%E7%94%A8/</link><pubDate>Sat, 28 Dec 2024 00:00:00 +0000</pubDate><guid>https://xx88cc66.github.io/p/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86dnsxnabbuasnampmapcidr%E4%BD%BF%E7%94%A8/</guid><description>&lt;h3 id="0x00">0x00
+&lt;/h3>&lt;p>注册projectdiscovery拿到key去调用api来使用&lt;/p>
+&lt;p>&lt;a class="link" href="http://projectdiscovery.io" target="_blank" rel="noopener"
+>http://projectdiscovery.io&lt;/a>&lt;/p>
+&lt;p>注册完点击头像即可看见api key&lt;/p>
+&lt;p>&lt;img src="https://xx88cc66.github.io/images/xinxi1/1.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>拿到key即可使用&lt;/p>
+&lt;h3 id="0x01-chaos使用">0x01 chaos使用
+&lt;/h3>&lt;p>chaos全面收集互联网子域名&lt;/p>
+&lt;p>&lt;img src="https://xx88cc66.github.io/images/xinxi1/2.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>打开运行显示key不存在&lt;/p>
+&lt;p>&lt;img src="https://xx88cc66.github.io/images/xinxi1/3.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>-key 来输入key -d 指定要查找的域名&lt;/p>
+&lt;p>&lt;img src="https://xx88cc66.github.io/images/xinxi1/4.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>-count看记录了多少域名&lt;/p>
+&lt;p>-o将他输出为txt来查看&lt;/p>
+&lt;p>&lt;img src="https://xx88cc66.github.io/images/xinxi1/5.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="0x02收集网段信息">0x02收集网段信息
+&lt;/h3>&lt;p>:::info
+&lt;a class="link" href="https://bgp.he.net" target="_blank" rel="noopener"
+>https://bgp.he.net&lt;/a>&lt;/p>
+&lt;p>:::&lt;/p>
+&lt;p>1.根据证书获取组织名 组织名获取ip段&lt;/p>
+&lt;p>&lt;img src="https://xx88cc66.github.io/images/xinxi1/6.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>&lt;img src="https://xx88cc66.github.io/images/xinxi1/7.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>2.组织名获取asn号码获取ip段&lt;/p>
+&lt;p>公司专门去asn去申请了这个号&lt;/p>
+&lt;p>&lt;img src="https://xx88cc66.github.io/images/xinxi1/8.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="0x03-asnamp可以利用来获取信息">0x03 asnamp可以利用来获取信息
+&lt;/h3>&lt;p>首先使用asnmap.exe -auth登录一下 用之前的key&lt;/p>
+&lt;p>单个扫描-a 编号&lt;/p>
+&lt;p>&lt;img src="https://xx88cc66.github.io/images/xinxi1/9.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>-i ip//反查公司 找到网段去asn网站查询出asn编号 再通过网站查询编号所属公司&lt;/p>
+&lt;p>&lt;img src="https://xx88cc66.github.io/images/xinxi1/10.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>&lt;img src="https://xx88cc66.github.io/images/xinxi1/11.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>&lt;img src="https://xx88cc66.github.io/images/xinxi1/12.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>-o xxx.txt 批量扫描&lt;/p>
+&lt;h3 id="0x04-mapcidr网段拆分为ip">0x04 mapcidr网段拆分为ip
+&lt;/h3>&lt;p>老规矩输入一下key&lt;/p>
+&lt;p>-cl xxx.xxx.xx.xx/xx&lt;/p>
+&lt;p>&lt;img src="https://xx88cc66.github.io/images/xinxi1/13.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="0x05根域名获取">0x05根域名获取
+&lt;/h3>&lt;p>通过ssl证书方向whois&lt;/p>
+&lt;p>tools.whoisxmlapi.com&lt;/p>
+&lt;p>通过ssl证书组织名进行证书查询 看看哪些网站用了相同证书&lt;/p>
+&lt;p>crt.sh&lt;/p>
+&lt;h3 id="0x06-网段测活-fscan">0x06 网段测活 fscan
+&lt;/h3>&lt;p>命令 fscan -hf xxx.txt -nopoc&lt;/p>
+&lt;p>全端口扫描 指纹识别&lt;/p></description></item><item><title>python基础1</title><link>https://xx88cc66.github.io/p/python%E5%9F%BA%E7%A1%801/</link><pubDate>Fri, 27 Dec 2024 00:00:00 +0000</pubDate><guid>https://xx88cc66.github.io/p/python%E5%9F%BA%E7%A1%801/</guid><description>&lt;p>&lt;strong>&lt;font style="color:rgb(0,0,0);">基础语法 &lt;/font>&lt;/strong>&lt;/p>
 &lt;p>&lt;strong>&lt;font style="color:rgb(0,0,0);">print &lt;/font>&lt;/strong>&lt;/p>
 &lt;p>&lt;strong>&lt;font style="color:rgb(0,0,0);">注释 &lt;/font>&lt;/strong>&lt;/p>
 &lt;p>&lt;font style="color:rgb(0,0,0);">单行注释 &lt;/font>&lt;/p>
