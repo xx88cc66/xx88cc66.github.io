@@ -1,4 +1,73 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on kenny博客</title><link>https://xx88cc66.github.io/post/</link><description>Recent content in Posts on kenny博客</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>kenny博客</copyright><lastBuildDate>Fri, 27 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://xx88cc66.github.io/post/index.xml" rel="self" type="application/rss+xml"/><item><title>python基础1</title><link>https://xx88cc66.github.io/p/python%E5%9F%BA%E7%A1%801/</link><pubDate>Fri, 27 Dec 2024 00:00:00 +0000</pubDate><guid>https://xx88cc66.github.io/p/python%E5%9F%BA%E7%A1%801/</guid><description>&lt;p>&lt;strong>&lt;font style="color:rgb(0,0,0);">基础语法 &lt;/font>&lt;/strong>&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on kenny博客</title><link>https://xx88cc66.github.io/post/</link><description>Recent content in Posts on kenny博客</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>kenny博客</copyright><lastBuildDate>Fri, 27 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://xx88cc66.github.io/post/index.xml" rel="self" type="application/rss+xml"/><item><title>http基础</title><link>https://xx88cc66.github.io/p/http%E5%9F%BA%E7%A1%80/</link><pubDate>Fri, 27 Dec 2024 00:00:00 +0000</pubDate><guid>https://xx88cc66.github.io/p/http%E5%9F%BA%E7%A1%80/</guid><description>&lt;h3 id="0x00">0x00
+&lt;/h3>&lt;p>原理：浏览器跟服务器交流的语言//服务器之间的协议&lt;/p>
+&lt;p>http是一个无状态的协议 所有的请求都是独立的（为了维持用户登录状态则需要cookie或session等等）&lt;/p>
+&lt;p>&lt;img src="https://xx88cc66.github.io/images/http/1.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>&lt;img src="https://xx88cc66.github.io/images/http/2.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="0x01">0x01
+&lt;/h3>&lt;p>http报文结构&lt;/p>
+&lt;p>请求头部和请求体是有空格的不然无法请求&lt;/p>
+&lt;p>&lt;img src="https://xx88cc66.github.io/images/http/3.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>请求行行 ：请求方法 请求路径 http版本&lt;/p>
+&lt;p>请求头部 ：包含关于客户端，请求或期望响应的信息 以赋值的形式表示 xxx: xxx&lt;/p>
+&lt;p>content type：请求格式&lt;/p>
+&lt;p>空行：不加则会报错&lt;/p>
+&lt;p>请求体：发送到服务器的数据 get的请求数据在请求行&lt;/p>
+&lt;h3 id="0x02">0x02
+&lt;/h3>&lt;p>请求方法&lt;/p>
+&lt;p>&lt;img src="https://xx88cc66.github.io/images/http/4.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>head可以降低对网站的请求量 比如写poc等批量会降低风险&lt;/p>
+&lt;h3 id="0x03">0x03
+&lt;/h3>&lt;p>状态码&lt;/p>
+&lt;ol>
+&lt;li>1xx - 信息性状态码
+&lt;ul>
+&lt;li>100 Continue：继续处理请求。&lt;/li>
+&lt;li>101 Switching Protocols：切换协议。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>2xx - 成功状态码
+&lt;ul>
+&lt;li>200 OK：请求已成功处理。&lt;/li>
+&lt;li>201 Created：请求已成功处理，并创建了新的资源。&lt;/li>
+&lt;li>202 Accepted：请求已被接受，但尚未处理完成。&lt;/li>
+&lt;li>204 No Content：请求已成功处理，但没有内容可返回。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>3xx - 重定向状态码
+&lt;ul>
+&lt;li>301 Moved Permanently：请求的资源已永久移动到新位置。&lt;/li>
+&lt;li>302 Found：请求的资源临时位于另一个URL。&lt;/li>
+&lt;li>304 Not Modified：请求的资源未被修改，因此返回一个空响应。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>4xx - 客户端错误状态码
+&lt;ul>
+&lt;li>400 Bad Request：服务器无法理解请求。&lt;/li>
+&lt;li>401 Unauthorized：请求需要身份验证。&lt;/li>
+&lt;li>403 Forbidden：请求被拒绝（通常是因为权限问题）。&lt;/li>
+&lt;li>404 Not Found：请求的资源不存在。&lt;/li>
+&lt;li>405 Method Not Allowed：请求方法不被允许。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>5xx - 服务器错误状态码
+&lt;ul>
+&lt;li>500 Internal Server Error：服务器遇到内部错误。&lt;/li>
+&lt;li>501 Not Implemented：服务器不支持请求的方法。&lt;/li>
+&lt;li>502 Bad Gateway：作为网关或代理的服务器从上游服务器接收到无效响应。&lt;/li>
+&lt;li>503 Service Unavailable：服务器暂时不可用。&lt;/li>
+&lt;li>504 Gateway Timeout：作为网关或代理的服务器没有从上游服务器在合理的时间内接收到响应。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;p>这些状态码帮助客户端和服务器之间进行有效的通信，确保网络请求和响应能够被正确地理解和处理&lt;/p></description></item><item><title>python基础1</title><link>https://xx88cc66.github.io/p/python%E5%9F%BA%E7%A1%801/</link><pubDate>Fri, 27 Dec 2024 00:00:00 +0000</pubDate><guid>https://xx88cc66.github.io/p/python%E5%9F%BA%E7%A1%801/</guid><description>&lt;p>&lt;strong>&lt;font style="color:rgb(0,0,0);">基础语法 &lt;/font>&lt;/strong>&lt;/p>
 &lt;p>&lt;strong>&lt;font style="color:rgb(0,0,0);">print &lt;/font>&lt;/strong>&lt;/p>
 &lt;p>&lt;strong>&lt;font style="color:rgb(0,0,0);">注释 &lt;/font>&lt;/strong>&lt;/p>
 &lt;p>&lt;font style="color:rgb(0,0,0);">单行注释 &lt;/font>&lt;/p>
