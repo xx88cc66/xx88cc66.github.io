@@ -141,7 +141,49 @@ loading="lazy"
 &lt;p>crt.sh&lt;/p>
 &lt;h3 id="0x06-网段测活-fscan">0x06 网段测活 fscan
 &lt;/h3>&lt;p>命令 fscan -hf xxx.txt -nopoc&lt;/p>
-&lt;p>全端口扫描 指纹识别&lt;/p></description></item><item><title>python基础1</title><link>https://xx88cc66.github.io/p/python%E5%9F%BA%E7%A1%801/</link><pubDate>Fri, 27 Dec 2024 00:00:00 +0000</pubDate><guid>https://xx88cc66.github.io/p/python%E5%9F%BA%E7%A1%801/</guid><description>&lt;p>&lt;strong>&lt;font style="color:rgb(0,0,0);">基础语法 &lt;/font>&lt;/strong>&lt;/p>
+&lt;p>全端口扫描 指纹识别&lt;/p>
+&lt;h3 id="0x07-dns">0x07 dns
+&lt;/h3>&lt;p>dns 就等于把ip翻译成域名的意思&lt;/p>
+&lt;p>dns解析记录什么意思&lt;/p>
+&lt;p>&lt;img src="https://xx88cc66.github.io/images/xinxi1/14.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>A:记录 &lt;a class="link" href="https://www.baidu.com" target="_blank" rel="noopener"
+>www.baidu.com&lt;/a>-&amp;gt;dns-&amp;gt;xx.x.xx.x.x&lt;/p>
+&lt;p>cname:将一个域名解析到另一个域名&lt;/p>
+&lt;p>&lt;img src="https://xx88cc66.github.io/images/xinxi1/15.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>这里发现当你ping百度第一时间会ping到另一个域名&lt;/p>
+&lt;p>比如配置一个云waf你需要&lt;/p>
+&lt;p>浏览器访问&amp;ndash;&amp;gt;www.xxx.com&amp;ndash;&amp;gt;cname&amp;ndash;&amp;gt;云waf.com&amp;ndash;&amp;gt;真正的服务器地址&lt;/p>
+&lt;p>查询dns解析&lt;/p>
+&lt;p>win nslookup&lt;/p>
+&lt;p>linux dig&lt;/p>
+&lt;h3 id="0x08-dns">0x08 dns
+&lt;/h3>&lt;p>dnsx&lt;/p>
+&lt;p>这个工具即可查询上面的&lt;/p>
+&lt;p>&lt;img src="https://xx88cc66.github.io/images/xinxi1/16.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>这里说明已经做了安全加固了 不能邮件伪造操作&lt;/p>
+&lt;p>&lt;img src="https://xx88cc66.github.io/images/xinxi1/17.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>端口探测&lt;/p>
+&lt;p>linux ：telnet&lt;/p>
+&lt;p>telnet xxx.xxx.com 端口号&lt;/p>
+&lt;p>17ce.com&lt;/p>
+&lt;p>判断有无cdn&lt;/p>
+&lt;p>&lt;img src="https://xx88cc66.github.io/images/xinxi1/18.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>一般ip地址一致基本不存在cdn&lt;/p>
+&lt;p>naabu&lt;/p>
+&lt;p>-host&lt;/p>
+&lt;p>&lt;img src="https://xx88cc66.github.io/images/xinxi1/19.png"
+loading="lazy"
+>&lt;/p></description></item><item><title>python基础1</title><link>https://xx88cc66.github.io/p/python%E5%9F%BA%E7%A1%801/</link><pubDate>Fri, 27 Dec 2024 00:00:00 +0000</pubDate><guid>https://xx88cc66.github.io/p/python%E5%9F%BA%E7%A1%801/</guid><description>&lt;p>&lt;strong>&lt;font style="color:rgb(0,0,0);">基础语法 &lt;/font>&lt;/strong>&lt;/p>
 &lt;p>&lt;strong>&lt;font style="color:rgb(0,0,0);">print &lt;/font>&lt;/strong>&lt;/p>
 &lt;p>&lt;strong>&lt;font style="color:rgb(0,0,0);">注释 &lt;/font>&lt;/strong>&lt;/p>
 &lt;p>&lt;font style="color:rgb(0,0,0);">单行注释 &lt;/font>&lt;/p>
