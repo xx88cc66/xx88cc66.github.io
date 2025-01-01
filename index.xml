@@ -183,6 +183,54 @@ loading="lazy"
 &lt;p>-host&lt;/p>
 &lt;p>&lt;img src="https://xx88cc66.github.io/images/xinxi1/19.png"
 loading="lazy"
+>&lt;/p></description></item><item><title>jwt身份验证加密绕过</title><link>https://xx88cc66.github.io/p/jwt%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81%E5%8A%A0%E5%AF%86%E7%BB%95%E8%BF%87/</link><pubDate>Fri, 27 Dec 2024 00:00:00 +0000</pubDate><guid>https://xx88cc66.github.io/p/jwt%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81%E5%8A%A0%E5%AF%86%E7%BB%95%E8%BF%87/</guid><description>&lt;h3 id="0x00-什么是jwt">0x00 什么是JWT：
+&lt;/h3>&lt;p>JSON 网络令牌 (JWT) 是一种标准化格式，用于在系统之间发送加密签名的 JSON 数据。它们理论上可以包含任何类型的数据，但最常用于发送有关用户的信息（“声明”），作为身份验证、会话处理和访问控制机制的一部分。
+与经典会话令牌不同，服务器需要的所有数据都存储在 JWT 本身的客户端。这使得 JWT 成为高度分布式网站的热门选择，用户需要与多个后端服务器无缝交互。
+简单理解JWT的本质就是：把用户信息通过加密后生成的一个字符串。&lt;/p>
+&lt;p>jwt分为3部分&lt;/p>
+&lt;p>HEADER：令牌头部，记录了整个令牌的类型和签名算法
+PAYLOAD：令牌负荷，记录了保存的主体信息，比如你要保存的用户信息就可以放到这里,可以减少数据库的访问。
+Signature：就是把header + payload + 密匙进行加密以后的密文数据。&lt;/p>
+&lt;h3 id="0x01-burp的jwt绕过靶场-未经验证的签名绕过-jwt-身份验证">0x01 burp的jwt绕过靶场 (未经验证的签名绕过 JWT 身份验证)：
+&lt;/h3>&lt;p>根据题目要求得知，需使用账号+密码：wiener : peter登录，后访问/admin页面，根据要求删除carlos用户即可通关。
+用系统提供的账号密码登录 为用户wiener 然后访问admin目录发现jwt密钥
+&lt;img src="https://xx88cc66.github.io/images/jwt/2.png"
+loading="lazy"
+>
+首先将jwt的第三部分删掉看看对密钥的检查是否严格 可以发现重放后还是可以继续访问
+&lt;img src="https://xx88cc66.github.io/images/jwt/3.png"
+loading="lazy"
+>
+复制去jwt.io 看看密钥
+&lt;img src="https://xx88cc66.github.io/images/jwt/4.png"
+loading="lazy"
+>
+可以看见wiener账户在密钥中 把他改成管理员即可访问绕过jwt验证
+&lt;img src="https://xx88cc66.github.io/images/jwt/5.png"
+loading="lazy"
+>
+&lt;img src="https://xx88cc66.github.io/images/jwt/6.png"
+loading="lazy"
+>
+可以看见重放后已经成功绕过验证并且登陆了&lt;/p>
+&lt;h3 id="0x02-burp的jwt绕过靶场-有缺陷的签名验证绕过-jwt-身份验证">0x02 burp的jwt绕过靶场 (有缺陷的签名验证绕过 JWT 身份验证)：
+&lt;/h3>&lt;p>同第一个关一样正常登入账户密码抓包，
+按照第一关方法修改administrator账号访问 /admin 后发现，仍无法成功。
+因为在Header中，设置alg的值可以选择签名方式，可以选择HS256，即HMAC和SHA256。在某种情况下可以设置为None，即不签名，但是一般都会过滤这种危险的设置。
+将alg的值改为none 再重复第一关操作 再将第三段删掉 即可绕过
+&lt;img src="https://xx88cc66.github.io/images/jwt/7.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="0x03-burp的jwt绕过靶场-弱签名密钥绕过-jwt-身份验证">0x03 burp的jwt绕过靶场 (：弱签名密钥绕过 JWT 身份验证)
+&lt;/h3>&lt;p>将第三段的密钥进行爆破 即可再重复第一关操作即可通过
+&lt;img src="https://xx88cc66.github.io/images/jwt/8.png"
+loading="lazy"
+>
+&lt;img src="https://xx88cc66.github.io/images/jwt/9.png"
+loading="lazy"
+>
+&lt;img src="https://xx88cc66.github.io/images/jwt/10.png"
+loading="lazy"
 >&lt;/p></description></item><item><title>python基础1</title><link>https://xx88cc66.github.io/p/python%E5%9F%BA%E7%A1%801/</link><pubDate>Fri, 27 Dec 2024 00:00:00 +0000</pubDate><guid>https://xx88cc66.github.io/p/python%E5%9F%BA%E7%A1%801/</guid><description>&lt;p>&lt;strong>&lt;font style="color:rgb(0,0,0);">基础语法 &lt;/font>&lt;/strong>&lt;/p>
 &lt;p>&lt;strong>&lt;font style="color:rgb(0,0,0);">print &lt;/font>&lt;/strong>&lt;/p>
 &lt;p>&lt;strong>&lt;font style="color:rgb(0,0,0);">注释 &lt;/font>&lt;/strong>&lt;/p>
@@ -541,503 +589,6 @@ loading="lazy"
 &lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">fun1&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">lambda&lt;/span> &lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="o">+&lt;/span>&lt;span class="n">b&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">fun1&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mi">2&lt;/span>&lt;span class="p">))&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div></description></item><item><title>python基础2</title><link>https://xx88cc66.github.io/p/python%E5%9F%BA%E7%A1%802/</link><pubDate>Fri, 27 Dec 2024 00:00:00 +0000</pubDate><guid>https://xx88cc66.github.io/p/python%E5%9F%BA%E7%A1%802/</guid><description>&lt;p>强制类型转换&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;span class="lnt">15
-&lt;/span>&lt;span class="lnt">16
-&lt;/span>&lt;span class="lnt">17
-&lt;/span>&lt;span class="lnt">18
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">poc&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">url&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">bugtype&lt;/span>&lt;span class="p">):&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">url&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s1">&amp;#39;&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;URL不能为空&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">exit&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="c1">#结束脚本运行&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">bugtype&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s1">&amp;#39;shiro&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="sa">f&lt;/span>&lt;span class="s1">&amp;#39;shiro漏洞 URL&lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="n">url&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s1">&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">bugtype&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s1">&amp;#39;dahua&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="sa">f&lt;/span>&lt;span class="s1">&amp;#39;dahua漏洞 URL&lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="n">url&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s1">&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">bugtype&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s1">&amp;#39;thinkphp&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="sa">f&lt;/span>&lt;span class="s1">&amp;#39;thinkphp漏洞 URL&lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="n">url&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s1">&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">msg&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">input&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;请输入URL 指定漏洞 空格分割：&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">split&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39; &amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="c1">#split是分割函数将此变成列表&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">poc&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">url&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">msg&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">lower&lt;/span>&lt;span class="p">(),&lt;/span>&lt;span class="n">bugtype&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">msg&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">lower&lt;/span>&lt;span class="p">())&lt;/span>&lt;span class="c1">#.lower()强制转换为小写&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>面向对象&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">面向过程和面向对象 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">• &lt;/font>&lt;font style="color:rgb(0,0,0);">面向过程 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">• &lt;/font>&lt;font style="color:rgb(0,0,0);">面向对象 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">面向对象 3 大特性 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">• &lt;/font>&lt;font style="color:rgb(0,0,0);">封装：将数据和揍作数据的方法封装在一起，形成一个对象，隐藏对象的傅部实现细节， &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">只暴露必要的接口。 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">• &lt;/font>&lt;font style="color:rgb(0,0,0);">继承：可以从已有的类中派生出新的类，新的类可以继承已有类的属性和方法，并可以添 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">加新的属性和方法。&lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">多态：同一个方法可以在不同的对象上产生不同的行为，这种特性称为多态。多态可以通 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">过继承、接口、重载等方式实现。 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">什么是类： &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">什么是属性： &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">什么是方法： &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">类和方法、属性、对象的偳系&lt;/font>&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;span class="lnt">15
-&lt;/span>&lt;span class="lnt">16
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">Student&lt;/span>&lt;span class="p">():&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="fm">__init__&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">):&lt;/span>&lt;span class="c1">#魔术方法&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">name&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;张三&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">nianl&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">19&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">tw&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">):&lt;/span>&lt;span class="c1">#self是类本身 不加调用不了上面的变量&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">name&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s1">&amp;#39;会跳舞&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">cg&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">):&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">name&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s1">&amp;#39;会唱歌&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">stu&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Student&lt;/span>&lt;span class="p">()&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">stu&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">name&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">stu&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">tw&lt;/span>&lt;span class="p">()&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>封装&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">Student&lt;/span>&lt;span class="p">():&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">name&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;张三&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">idcard&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;123asdadad&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">__tw&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">):&lt;/span>&lt;span class="c1">#封装方法在前面加__外部无法访问&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">name&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s1">&amp;#39;会跳舞&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">cg&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">):&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">name&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s1">&amp;#39;会唱歌&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">__tw&lt;/span>&lt;span class="p">())&lt;/span>&lt;span class="c1">#公有方法调用私有的方法&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">stu&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Student&lt;/span>&lt;span class="p">()&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">stu&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">cg&lt;/span>&lt;span class="p">())&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>继承&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">Shifu&lt;/span>&lt;span class="p">():&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">jineng&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;渗透测试&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">work&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">):&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;做web渗透测试&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">Tudi&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Shifu&lt;/span>&lt;span class="p">):&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">work&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">):&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;师傅会做代码审计&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">td&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Tudi&lt;/span>&lt;span class="p">()&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">td&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">work&lt;/span>&lt;span class="p">())&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>多态&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;span class="lnt">15
-&lt;/span>&lt;span class="lnt">16
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">Dongwu&lt;/span>&lt;span class="p">():&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">eat&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">):&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;动物要吃东西&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">Dog&lt;/span>&lt;span class="p">():&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">eat&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">):&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;狗要吃肉&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">Person&lt;/span>&lt;span class="p">():&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">eat&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">):&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;人要吃饭&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">fun&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">cls&lt;/span>&lt;span class="p">):&lt;/span>&lt;span class="c1">#定义一个函数来处理&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">cls&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">eat&lt;/span>&lt;span class="p">()&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">fun&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Person&lt;/span>&lt;span class="p">())&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;span class="lnt">6
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">Person&lt;/span>&lt;span class="p">():&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">nl&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">12&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">Person&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">nl&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">22&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">ren&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Person&lt;/span>&lt;span class="p">()&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ren&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">nl&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>文件处理&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">普通文件 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">Python open() 方法用于打开一个文件，并返回文件对象，在对文件进行处理过程都需要使用 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">到这个函数，如果该文件无法被打开，会抛出 OSError。&lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">使用 open() 方法一定要保证偳闭文件对象，即调用 close() 方法。 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">open() 函数常用形式是接收两个参数：文件名(file)和模式(mode)&lt;/font>&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;span class="lnt">15
-&lt;/span>&lt;span class="lnt">16
-&lt;/span>&lt;span class="lnt">17
-&lt;/span>&lt;span class="lnt">18
-&lt;/span>&lt;span class="lnt">19
-&lt;/span>&lt;span class="lnt">20
-&lt;/span>&lt;span class="lnt">21
-&lt;/span>&lt;span class="lnt">22
-&lt;/span>&lt;span class="lnt">23
-&lt;/span>&lt;span class="lnt">24
-&lt;/span>&lt;span class="lnt">25
-&lt;/span>&lt;span class="lnt">26
-&lt;/span>&lt;span class="lnt">27
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">t&lt;/span> &lt;span class="n">文本模式&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">默认&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">。&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">x&lt;/span> &lt;span class="n">備模式&lt;/span>&lt;span class="err">，&lt;/span>&lt;span class="n">新建一个文件&lt;/span>&lt;span class="err">，&lt;/span>&lt;span class="n">如果该文件已存在则会报错&lt;/span>&lt;span class="err">。&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">b&lt;/span> &lt;span class="n">二进制模式&lt;/span>&lt;span class="err">。&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">+&lt;/span> &lt;span class="n">打开一个文件进行更新&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">可读可備&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">。&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">U&lt;/span> &lt;span class="n">通用换行模式&lt;/span>&lt;span class="err">（&lt;/span>&lt;span class="n">不推荐&lt;/span>&lt;span class="err">）。&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">r&lt;/span> &lt;span class="n">以只读方式打开文件&lt;/span>&lt;span class="err">。&lt;/span>&lt;span class="n">文件的指针将会放在文件的开头&lt;/span>&lt;span class="err">。&lt;/span>&lt;span class="n">这是默认模式&lt;/span>&lt;span class="err">。&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">rb&lt;/span> &lt;span class="n">以二进制格式打开一个文件用于只读&lt;/span>&lt;span class="err">。&lt;/span>&lt;span class="n">文件指针将会放在文件的开头&lt;/span>&lt;span class="err">。&lt;/span>&lt;span class="n">这是默认模式&lt;/span>&lt;span class="err">。&lt;/span>&lt;span class="n">一般用于非&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">文本文件如图片等&lt;/span>&lt;span class="err">。&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">r&lt;/span>&lt;span class="o">+&lt;/span> &lt;span class="n">打开一个文件用于读備&lt;/span>&lt;span class="err">。&lt;/span>&lt;span class="n">文件指针将会放在文件的开头&lt;/span>&lt;span class="err">。&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">rb&lt;/span>&lt;span class="o">+&lt;/span> &lt;span class="n">以二进制格式打开一个文件用于读備&lt;/span>&lt;span class="err">。&lt;/span>&lt;span class="n">文件指针将会放在文件的开头&lt;/span>&lt;span class="err">。&lt;/span>&lt;span class="n">一般用于非文本文件如图片&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">等&lt;/span>&lt;span class="err">。&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">w&lt;/span> &lt;span class="n">打开一个文件只用于備健&lt;/span>&lt;span class="err">。&lt;/span>&lt;span class="n">如果该文件已存在则打开文件&lt;/span>&lt;span class="err">，&lt;/span>&lt;span class="n">并从开头开始编辑&lt;/span>&lt;span class="err">，&lt;/span>&lt;span class="n">即原有傅容会被删&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">除&lt;/span>&lt;span class="err">。&lt;/span>&lt;span class="n">如果该文件不存在&lt;/span>&lt;span class="err">，&lt;/span>&lt;span class="n">创建新文件&lt;/span>&lt;span class="err">。&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">wb&lt;/span> &lt;span class="n">以二进制格式打开一个文件只用于備健&lt;/span>&lt;span class="err">。&lt;/span>&lt;span class="n">如果该文件已存在则打开文件&lt;/span>&lt;span class="err">，&lt;/span>&lt;span class="n">并从开头开始编辑&lt;/span>&lt;span class="err">，&lt;/span>&lt;span class="n">即原&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">有傅容会被删除&lt;/span>&lt;span class="err">。&lt;/span>&lt;span class="n">如果该文件不存在&lt;/span>&lt;span class="err">，&lt;/span>&lt;span class="n">创建新文件&lt;/span>&lt;span class="err">。&lt;/span>&lt;span class="n">一般用于非文本文件如图片等&lt;/span>&lt;span class="err">。&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">w&lt;/span>&lt;span class="o">+&lt;/span> &lt;span class="n">打开一个文件用于读備&lt;/span>&lt;span class="err">。&lt;/span>&lt;span class="n">如果该文件已存在则打开文件&lt;/span>&lt;span class="err">，&lt;/span>&lt;span class="n">并从开头开始编辑&lt;/span>&lt;span class="err">，&lt;/span>&lt;span class="n">即原有傅容会被删&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">除&lt;/span>&lt;span class="err">。&lt;/span>&lt;span class="n">如果该文件不存在&lt;/span>&lt;span class="err">，&lt;/span>&lt;span class="n">创建新文件&lt;/span>&lt;span class="err">。&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">wb&lt;/span>&lt;span class="o">+&lt;/span> &lt;span class="n">以二进制格式打开一个文件用于读備&lt;/span>&lt;span class="err">。&lt;/span>&lt;span class="n">如果该文件已存在则打开文件&lt;/span>&lt;span class="err">，&lt;/span>&lt;span class="n">并从开头开始编辑&lt;/span>&lt;span class="err">，&lt;/span>&lt;span class="n">即原有&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">傅容会被删除&lt;/span>&lt;span class="err">。&lt;/span>&lt;span class="n">如果该文件不存在&lt;/span>&lt;span class="err">，&lt;/span>&lt;span class="n">创建新文件&lt;/span>&lt;span class="err">。&lt;/span>&lt;span class="n">一般用于非文本文件如图片等&lt;/span>&lt;span class="err">。&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">a&lt;/span> &lt;span class="n">打开一个文件用于追加&lt;/span>&lt;span class="err">。&lt;/span>&lt;span class="n">如果该文件已存在&lt;/span>&lt;span class="err">，&lt;/span>&lt;span class="n">文件指针将会放在文件的结尾&lt;/span>&lt;span class="err">。&lt;/span>&lt;span class="n">也就是说&lt;/span>&lt;span class="err">，&lt;/span>&lt;span class="n">新的傅容&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">将会被備健到已有傅容之后&lt;/span>&lt;span class="err">。&lt;/span>&lt;span class="n">如果该文件不存在&lt;/span>&lt;span class="err">，&lt;/span>&lt;span class="n">创建新文件进行備健&lt;/span>&lt;span class="err">。&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">ab&lt;/span> &lt;span class="n">以二进制格式打开一个文件用于追加&lt;/span>&lt;span class="err">。&lt;/span>&lt;span class="n">如果该文件已存在&lt;/span>&lt;span class="err">，&lt;/span>&lt;span class="n">文件指针将会放在文件的结尾&lt;/span>&lt;span class="err">。&lt;/span>&lt;span class="n">也就是&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">说&lt;/span>&lt;span class="err">，&lt;/span>&lt;span class="n">新的傅容将会被備健到已有傅容之后&lt;/span>&lt;span class="err">。&lt;/span>&lt;span class="n">如果该文件不存在&lt;/span>&lt;span class="err">，&lt;/span>&lt;span class="n">创建新文件进行備健&lt;/span>&lt;span class="err">。&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">a&lt;/span>&lt;span class="o">+&lt;/span> &lt;span class="n">打开一个文件用于读備&lt;/span>&lt;span class="err">。&lt;/span>&lt;span class="n">如果该文件已存在&lt;/span>&lt;span class="err">，&lt;/span>&lt;span class="n">文件指针将会放在文件的结尾&lt;/span>&lt;span class="err">。&lt;/span>&lt;span class="n">文件打开时会是追加&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">模式&lt;/span>&lt;span class="err">。&lt;/span>&lt;span class="n">如果该文件不存在&lt;/span>&lt;span class="err">，&lt;/span>&lt;span class="n">创建新文件用于读備&lt;/span>&lt;span class="err">。&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">ab&lt;/span>&lt;span class="o">+&lt;/span> &lt;span class="n">以二进制格式打开一个文件用于追加&lt;/span>&lt;span class="err">。&lt;/span>&lt;span class="n">如果该文件已存在&lt;/span>&lt;span class="err">，&lt;/span>&lt;span class="n">文件指针将会放在文件的结尾&lt;/span>&lt;span class="err">。&lt;/span>&lt;span class="n">如果该&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">文件不存在&lt;/span>&lt;span class="err">，&lt;/span>&lt;span class="n">创建新文件用于读備&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>&lt;font style="color:rgb(51,51,51);">参数说明: &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">• file: 必需，文件路径（相对或者绝对路径）。&lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">• mode: 可选，文件打开模式 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">• &lt;/font>&lt;font style="color:rgb(0,0,0);">buffering: 设置缓傲 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">• &lt;/font>&lt;font style="color:rgb(0,0,0);">encoding: 一般使用 utf8 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">• &lt;/font>&lt;font style="color:rgb(0,0,0);">errors: 报错级别 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">• &lt;/font>&lt;font style="color:rgb(0,0,0);">newline: 区分换行符 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">• &lt;/font>&lt;font style="color:rgb(0,0,0);">closefd: 传健的 file 参数类型 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">• &lt;/font>&lt;font style="color:rgb(0,0,0);">opener: 设置自定义开启器，开启器的返回值必须是一个打开的文件描述符。 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">file 对象 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">file.close() &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">file.read([size]) &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">file.readline([size]) &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">file.readlines([sizeint]) &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">file.write(str) &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">上下文管理器：&lt;/font>&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">fi&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">open&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;1111.txt&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s1">&amp;#39;r&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">encoding&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;utf-8&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">readline&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="c1">#以列表的形式读取&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">for&lt;/span> &lt;span class="n">i&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="n">fi&lt;/span>&lt;span class="p">:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">replace&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;&lt;/span>&lt;span class="se">\n&lt;/span>&lt;span class="s1">&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s1">&amp;#39;&amp;#39;&lt;/span>&lt;span class="p">))&lt;/span>&lt;span class="c1">#replace替换&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">fi&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">close&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="c1">#读完关闭&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">fi&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">open&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;1111.txt&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s1">&amp;#39;r&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">encoding&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;utf-8&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">read&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">3&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="c1">#读取多少个字节&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">fi&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">fi&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">open&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;1111.txt&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s1">&amp;#39;a&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">encoding&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;utf-8&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">fi&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">write&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;aaaaaaaaaaaaaaaaaa&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="c1">#写入&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">with&lt;/span> &lt;span class="nb">open&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;test.txt&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s1">&amp;#39;a&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">encoding&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;utf-8&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="n">f&lt;/span>&lt;span class="p">:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">f&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">write&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;测试上下文管理器写入&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>&lt;strong>&lt;font style="color:rgb(0,0,0);">异常处理 &lt;/font>&lt;/strong>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">默认情債下，当一个程序发生异常时，程序会终止退出。如果要避偍程序退出，可以使用捕获 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">异常的方式获取这个异常的名称，傍通过偶他的逻辑代码让程序继续运行，这种根据异常做出 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">的逻辑处理叫作异常处理。 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">理解： &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">当某些代码可能会出错时，就可以用 try 来运行这段代码，如果执行出现异常，系统就会自动 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">生成一个异常类型，然后在 except 中寻找能够处理该异常类型的代码块，处理完异常后就继 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">续执行 try&amp;hellip;except&amp;hellip;后面的代码；一旦在 except 中殡有找到合适的的 except 代码块来处理异常，那么程序就会终止退出，所以一般都会使用 except [Exception] 来处理那些未知的异常，以保证程序不会终止退出。&lt;/font>&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># try:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># fi = open(&amp;#39;asd.txt&amp;#39;, &amp;#39;r&amp;#39;).read()&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># print(fi)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># except:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># print(&amp;#39;文件不存在&amp;#39;)#读取了一个不存在的文件用try抑制他的报错&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>&lt;strong>&lt;font style="color:rgb(0,0,0);">break &lt;/font>&lt;/strong>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">终止循环 &lt;/font>&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># for i in [1,2,3,4,5,6,7,8,9]:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># if i == 3:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># break&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># else:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># print(i)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>&lt;strong>&lt;font style="color:rgb(0,0,0);">continue &lt;/font>&lt;/strong>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">跳出本次循环，继续下次循环 &lt;/font>&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># for i in [1,2,3,4,5,6,7,8,9]:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># if i == 3:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># continue&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># else:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># print(i)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>&lt;strong>&lt;font style="color:rgb(0,0,0);">字符串揍作 &lt;/font>&lt;/strong>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">字符串切片 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">[:5] &lt;/font>&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">str&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;112udh.7237hs&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nb">str&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="mi">4&lt;/span>&lt;span class="p">])&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>&lt;font style="color:rgb(0,0,0);">字符串查找 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">find &lt;/font>&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">str&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;http://baidu.com&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &lt;span class="nb">str&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">find&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;https&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="c1">#-1的意思 一般查到都会返回字符串所在的位置 一般不会等于-1&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;https协议&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">else&lt;/span>&lt;span class="p">:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;http协议&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>&lt;font style="color:rgb(0,0,0);">字符串替换 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">replace &lt;/font>&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">st&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;http://baidu.com&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#print(st.find(&amp;#39;baidu&amp;#39;))&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">st1&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">st&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">replace&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;http&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s1">&amp;#39;https&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">st1&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>&lt;font style="color:rgb(0,0,0);">字符串拆分 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">split &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">字符串连接 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">join &lt;/font>&lt;/p>
-&lt;p>&lt;strong>&lt;font style="color:rgb(0,0,0);">列表推导式&lt;/font>&lt;/strong>&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;span class="lnt">15
-&lt;/span>&lt;span class="lnt">16
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># for i in range(5):&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># if i % 3 == 0:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># print(i)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">res&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="n">i&lt;/span> &lt;span class="k">for&lt;/span> &lt;span class="n">i&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="nb">range&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">5&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="n">i&lt;/span> &lt;span class="o">%&lt;/span> &lt;span class="mi">3&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># print(res)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">a&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[[&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">y&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="k">for&lt;/span> &lt;span class="n">x&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="nb">range&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">5&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="n">x&lt;/span> &lt;span class="o">%&lt;/span> &lt;span class="mi">2&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="mi">0&lt;/span> &lt;span class="k">for&lt;/span> &lt;span class="n">y&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="nb">range&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">5&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="n">y&lt;/span> &lt;span class="o">%&lt;/span> &lt;span class="mi">2&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">for&lt;/span> &lt;span class="n">x&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="nb">range&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">5&lt;/span>&lt;span class="p">):&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">x&lt;/span> &lt;span class="o">%&lt;/span> &lt;span class="mi">2&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">for&lt;/span> &lt;span class="n">y&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="nb">range&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">5&lt;/span>&lt;span class="p">):&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">y&lt;/span> &lt;span class="o">%&lt;/span> &lt;span class="mi">2&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">y&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div></description></item><item><title>挖src的信息收集小技巧</title><link>https://xx88cc66.github.io/p/%E6%8C%96src%E7%9A%84%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E5%B0%8F%E6%8A%80%E5%B7%A7/</link><pubDate>Fri, 27 Dec 2024 00:00:00 +0000</pubDate><guid>https://xx88cc66.github.io/p/%E6%8C%96src%E7%9A%84%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E5%B0%8F%E6%8A%80%E5%B7%A7/</guid><description>&lt;h3 id="0一般src会给你指定的域名没有往下面找">0.一般src会给你指定的域名没有往下面找
