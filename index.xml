@@ -207,367 +207,66 @@ loading="lazy"
 >
 &lt;img src="https://xx88cc66.github.io/images/jwt/10.png"
 loading="lazy"
->&lt;/p></description></item><item><title>python基础1</title><link>https://xx88cc66.github.io/p/python%E5%9F%BA%E7%A1%801/</link><pubDate>Fri, 27 Dec 2024 00:00:00 +0000</pubDate><guid>https://xx88cc66.github.io/p/python%E5%9F%BA%E7%A1%801/</guid><description>&lt;p>&lt;strong>&lt;font style="color:rgb(0,0,0);">基础语法 &lt;/font>&lt;/strong>&lt;/p>
-&lt;p>&lt;strong>&lt;font style="color:rgb(0,0,0);">print &lt;/font>&lt;/strong>&lt;/p>
-&lt;p>&lt;strong>&lt;font style="color:rgb(0,0,0);">注释 &lt;/font>&lt;/strong>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">单行注释 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">ctrl+/ &lt;/font>&lt;/p>
-&lt;p>&lt;strong>&lt;font style="color:rgb(0,0,0);">变量 &lt;/font>&lt;/strong>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">变量命名规范： &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">必须由字母、数字、下划线组成，不能以数字开头 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">不可以使用 Python 的偳键字作为变量名 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">区分大小備 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">建议用驼峰命名法：HelloWord，helloWord &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">下划线连接法：hello_word&lt;/font>&lt;/p>
-&lt;p>&lt;strong>&lt;font style="color:rgb(0,0,0);">import 导包 &lt;/font>&lt;/strong>&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-php" data-lang="php">&lt;span class="line">&lt;span class="cl">&lt;span class="nx">import&lt;/span> &lt;span class="nx">requests&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">from&lt;/span> &lt;span class="nx">random&lt;/span> &lt;span class="nx">import&lt;/span> &lt;span class="nx">randint&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="nx">rd&lt;/span>&lt;span class="c1">//缩短命令
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>&lt;font style="color:rgb(0,0,0);">Python 源代码文件就是一个模块 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">模块让你能够有逻辑地组织你的 Python 代码段。 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">把相偳的代码分配到一个模块里能让你的代码更好用，更易懂。 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">模块能定义函数，类和变量，模块里也能包含可执行的代码。 &lt;/font>&lt;/p>
-&lt;p>&lt;strong>&lt;font style="color:rgb(0,0,0);">pip 安装第三方包 &lt;/font>&lt;/strong>&lt;/p>
-&lt;p>&lt;strong>&lt;font style="color:rgb(0,0,0);">修改 pip 源 &lt;/font>&lt;/strong>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">pip config set global.index-url &lt;a class="link" href="https://pypi.tuna.tsinghua.edu.cn/simple" target="_blank" rel="noopener"
->https://pypi.tuna.tsinghua.edu.cn/simple&lt;/a> &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">可以手动更改&lt;code>pip&lt;/code>的配置文件，以达到更改镜像源的效果。在用户目录下（Windows 系统为 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">&lt;code>C:\Users\用户名&lt;/code>，Linux 系统为&lt;code>/home/用户名&lt;/code>）创建&lt;code>.pip&lt;/code>目录，然后在该目录下创建 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">&lt;code>pip.conf&lt;/code>文件，備健如下傅容： &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">``` &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">[global] &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">index-url = &lt;/font>&lt;font style="color:rgb(0,0,255);">&lt;a class="link" href="https://pypi.tuna.tsinghua.edu.cn/simple" target="_blank" rel="noopener"
->https://pypi.tuna.tsinghua.edu.cn/simple&lt;/a> &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">``` &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">-i 临时使用 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">python setup.py install&lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">&lt;/font>&lt;/p>
-&lt;p>&lt;strong>&lt;font style="color:rgb(0,0,0);">单引号、双引号、三引号&lt;/font>&lt;/strong>&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;span class="lnt">6
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-php" data-lang="php">&lt;span class="line">&lt;span class="cl">&lt;span class="nx">st&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;111&amp;#39;&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="mi">1111&lt;/span>&lt;span class="s1">&amp;#39;/111
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s1"> st=&amp;#39;&amp;#39;&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="mi">11111&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s1">&amp;#39;&amp;#39;&amp;#39;
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s1">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s1"> str1 = &amp;#34;&amp;#39;&lt;/span>&lt;span class="nx">aaaaa\&lt;/span>&lt;span class="err">&amp;#39;&lt;/span>&lt;span class="nx">aaaaa\&lt;/span>&lt;span class="err">&amp;#39;&lt;/span>&lt;span class="nx">aaaaa\&lt;/span>&lt;span class="err">&amp;#39;&lt;/span>&lt;span class="nx">aaaaa\&lt;/span>&lt;span class="err">&amp;#39;&lt;/span>&lt;span class="s2">&amp;#34;
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>&lt;strong>&lt;font style="color:rgb(0,0,0);">数据类型 &lt;/font>&lt;/strong>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">数字 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">字符串 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">布尔 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">列表 &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">元组&lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">字典&lt;/font>&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-php" data-lang="php">&lt;span class="line">&lt;span class="cl">&lt;span class="k">list&lt;/span> &lt;span class="o">=&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mi">2&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s1">&amp;#39;aaaa&amp;#39;&lt;/span>&lt;span class="p">,{&lt;/span>&lt;span class="s1">&amp;#39;name&amp;#39;&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="s1">&amp;#39;1111&amp;#39;&lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="c1">//字典,(1,2)]
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>&lt;strong>&lt;font style="color:rgb(0,0,0);">type 函数 &lt;/font>&lt;/strong>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">可以获取变量的数据类型 &lt;/font>&lt;/p>
-&lt;p>&lt;strong>&lt;font style="color:rgb(0,0,0);">类型转换 &lt;/font>&lt;/strong>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">int() &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">float() &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">str() &lt;/font>&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;span class="lnt">6
-&lt;/span>&lt;span class="lnt">7
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-php" data-lang="php">&lt;span class="line">&lt;span class="cl">&lt;span class="nx">s&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mf">2.8&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">st&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nx">int&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">s&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">type&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">st&lt;/span>&lt;span class="p">))&lt;/span>&lt;span class="c1">//type判断类型
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">s&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mf">2.8&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">st&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nx">int&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">s&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">st&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>&lt;strong>&lt;font style="color:rgb(0,0,0);">运算符 &lt;/font>&lt;/strong>&lt;/p>
-&lt;p>&lt;strong>&lt;font style="color:rgb(0,0,0);">算术运算符 &lt;/font>&lt;/strong>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">优先级&lt;/font>&lt;/p>
-&lt;p>() &amp;gt; ** &amp;gt; * / // % &amp;gt; + -&lt;br>
-**幂运算&lt;br>
-//歂商&lt;br>
-%歂余&lt;br>
-比较运算符&lt;/p>
-&lt;blockquote>
-&lt;p>&lt;font style="color:rgb(0,0,0);">&amp;lt; &amp;gt;= &amp;lt;= == ！=&lt;br>
-&lt;/font>&lt;font style="color:rgb(0,0,0);">循环语句&lt;br>
-&lt;/font>&lt;font style="color:rgb(0,0,0);"> for&lt;br>
-&lt;/font>&lt;font style="color:rgb(0,0,0);"> while&lt;/font>&lt;/p>
-&lt;/blockquote>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-php" data-lang="php">&lt;span class="line">&lt;span class="cl">&lt;span class="nx">xzh&lt;/span> &lt;span class="o">=&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mi">2&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mi">3&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mi">4&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mi">5&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mi">6&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mi">7&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mi">8&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mi">9&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mi">10&lt;/span>&lt;span class="p">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">for&lt;/span> &lt;span class="nx">i&lt;/span> &lt;span class="nx">in&lt;/span> &lt;span class="nx">xzh&lt;/span>&lt;span class="o">:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">i&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-php" data-lang="php">&lt;span class="line">&lt;span class="cl">&lt;span class="nx">xzh&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nx">open&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;1111.txt&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s1">&amp;#39;r&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="nx">readline&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="c1">//读取文件所有内容
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="k">for&lt;/span> &lt;span class="nx">f&lt;/span> &lt;span class="nx">in&lt;/span> &lt;span class="nx">xzh&lt;/span>&lt;span class="o">:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">f&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="c1">//
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-php" data-lang="php">&lt;span class="line">&lt;span class="cl">&lt;span class="nx">aaa&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">while&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">aaa&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="mi">9&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">://&lt;/span>&lt;span class="nx">循环条件&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">aaa&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">aaa&lt;/span> &lt;span class="o">=&lt;/span>&lt;span class="nx">aaa&lt;/span>&lt;span class="o">+&lt;/span>&lt;span class="mi">1&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-php" data-lang="php">&lt;span class="line">&lt;span class="cl">&lt;span class="nx">aaa&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">while&lt;/span> &lt;span class="k">True&lt;/span>&lt;span class="o">:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">aaa&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>&lt;strong>&lt;font style="color:rgb(0,0,0);">if 判断 &lt;/font>&lt;/strong>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);"> if &lt;/font>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);"> if else &lt;/font>&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>&lt;span class="mi">2&lt;/span>&lt;span class="p">):&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">111&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">else&lt;/span>&lt;span class="p">:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">222&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>&lt;strong>&lt;font style="color:rgb(0,0,0);">列表、字典、元组、集合操作 &lt;/font>&lt;/strong>&lt;/p>
-&lt;p>&lt;strong>&lt;font style="color:rgb(0,0,0);">列表 &lt;/font>&lt;/strong>&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">访问列表里的值：&lt;/font>&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">li&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mi">2&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mi">3&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mi">4&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s1">&amp;#39;a&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s1">&amp;#39;b&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s1">&amp;#39;c&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s1">&amp;#39;d&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s1">&amp;#39;e&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">li&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="mi">2&lt;/span>&lt;span class="p">:])&lt;/span>&lt;span class="n">访问3到3后面的&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">li&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="mi">2&lt;/span>&lt;span class="p">])&lt;/span>&lt;span class="n">访问3&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>从0开始&lt;/p>
-&lt;p>&lt;font style="color:rgb(0,0,0);">添加列表元素&lt;/font>&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">aaa&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[]&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">aaa&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">append&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;abc&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">aaa&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>删除列表元素&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">del&lt;/span> &lt;span class="n">aaa&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">del&lt;/span> &lt;span class="n">aaa&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">:]&lt;/span>&lt;span class="o">//&lt;/span>&lt;span class="n">删除0后面的&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">aaa&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>最大值最小值&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;span class="lnt">6
-&lt;/span>&lt;span class="lnt">7
-&lt;/span>&lt;span class="lnt">8
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">aaa&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mi">2&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mi">3&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mi">4&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mi">5&lt;/span>&lt;span class="p">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nb">max&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">aaa&lt;/span>&lt;span class="p">))&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nb">min&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">aaa&lt;/span>&lt;span class="p">))&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nb">len&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">aaa&lt;/span>&lt;span class="p">))&lt;/span>&lt;span class="o">//&lt;/span>&lt;span class="n">字符串有多少&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">aaa&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">count&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">2&lt;/span>&lt;span class="p">))&lt;/span>&lt;span class="o">//&lt;/span>&lt;span class="mi">2&lt;/span>&lt;span class="n">在字符串里出现的次数&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">aaa&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="mi">2&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;需要修改成什么&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="字典">字典
-&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;span class="lnt">6
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">bbb&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="s1">&amp;#39;xzh&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="s1">&amp;#39;shuaige&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s1">&amp;#39;age&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="s1">&amp;#39;22&amp;#39;&lt;/span>&lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="mf">1.&lt;/span>&lt;span class="n">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">bbb&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;xzh&amp;#39;&lt;/span>&lt;span class="p">))&lt;/span>&lt;span class="o">//&lt;/span>&lt;span class="n">获取xzh的值&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="mf">2.&lt;/span>&lt;span class="k">for&lt;/span> &lt;span class="n">keys&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">values&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="n">bbb&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">items&lt;/span>&lt;span class="p">():&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">keys&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">values&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">//&lt;/span>&lt;span class="n">for循环打印所有值&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="mf">3.&lt;/span>&lt;span class="n">bbb&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;xzh&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;meinv&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">bbb&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">//&lt;/span>&lt;span class="n">修改值&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>列表去重&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;span class="lnt">6
-&lt;/span>&lt;span class="lnt">7
-&lt;/span>&lt;span class="lnt">8
-&lt;/span>&lt;span class="lnt">9
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">li&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mi">2&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mi">3&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mi">4&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mi">5&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mi">6&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mi">7&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mi">2&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mi">2&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mi">3&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mi">4&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mi">2&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mi">3&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mi">4&lt;/span>&lt;span class="p">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">templist&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[]&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">for&lt;/span> &lt;span class="n">l&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="n">li&lt;/span>&lt;span class="p">:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">l&lt;/span> &lt;span class="ow">not&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="n">templist&lt;/span>&lt;span class="p">:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">templist&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">append&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">l&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">else&lt;/span>&lt;span class="p">:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">l&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s1">&amp;#39;重复&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">templist&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>函数 python顺序从上到下&lt;/p>
-&lt;p>函数下面没写东西得加上pass不然会报错&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">requests&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">st&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="c1">#全局变量&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">get_all_url&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">url&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="o">**&lt;/span>&lt;span class="n">payload&lt;/span>&lt;span class="p">):&lt;/span>&lt;span class="c1">#def定义函数 **xxx指定多个&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">st&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">global&lt;/span> &lt;span class="n">st1&lt;/span> &lt;span class="c1">#global引用&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">payload&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;payload1&amp;#39;&lt;/span>&lt;span class="p">])&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;爬虫代码&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">sqli&lt;/span>&lt;span class="p">():&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;是否有注入&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">res&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">get_all_url&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;url&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">payload&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;payload&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">payload1&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;p1&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">payload2&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;p2&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">res&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">st1&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;span class="lnt">6
-&lt;/span>&lt;span class="lnt">7
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">calc1&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nb">type&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="o">**&lt;/span>&lt;span class="n">nums&lt;/span>&lt;span class="p">):&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="nb">type&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s1">&amp;#39;乘&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">nums&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;nums1&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">*&lt;/span> &lt;span class="n">nums&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;nums2&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">res&lt;/span>&lt;span class="o">=&lt;/span> &lt;span class="n">calc1&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nb">type&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;乘&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">nums1&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">nums2&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">2&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="c1">#type类型&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">res&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>匿名函数&lt;/p>
-&lt;p>只能写一行代码&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">fun1&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">lambda&lt;/span> &lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="o">+&lt;/span>&lt;span class="n">b&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">fun1&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mi">2&lt;/span>&lt;span class="p">))&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div></description></item><item><title>挖src的信息收集小技巧</title><link>https://xx88cc66.github.io/p/%E6%8C%96src%E7%9A%84%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E5%B0%8F%E6%8A%80%E5%B7%A7/</link><pubDate>Fri, 27 Dec 2024 00:00:00 +0000</pubDate><guid>https://xx88cc66.github.io/p/%E6%8C%96src%E7%9A%84%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E5%B0%8F%E6%8A%80%E5%B7%A7/</guid><description>&lt;h3 id="0一般src会给你指定的域名没有往下面找">0.一般src会给你指定的域名没有往下面找
+>&lt;/p></description></item><item><title>swagger深入利用</title><link>https://xx88cc66.github.io/p/swagger%E6%B7%B1%E5%85%A5%E5%88%A9%E7%94%A8/</link><pubDate>Fri, 27 Dec 2024 00:00:00 +0000</pubDate><guid>https://xx88cc66.github.io/p/swagger%E6%B7%B1%E5%85%A5%E5%88%A9%E7%94%A8/</guid><description>&lt;h3 id="0x00-什么是swagger">0x00 什么是swagger
+&lt;/h3>&lt;p>一、什么是swagger
+Swagger 是一个规范和完整的框架，用于生成、描述、调用和可视化RESTful风格的 Web 服务。总体目标是使客户端和文件系统作为服务器以同样的速度来更新。文件的方法，参数和模型紧密集成到服务器端的代码，允许API来始终保持同步。Swagger让部署管理和使用功能强大的API变得非常简单。
+简单来说，就是后端给前端提供的一个可以查看各种接口的方法、类型等。&lt;/p>
+&lt;h3 id="0x01-swagger-src利用">0x01 swagger src利用
+&lt;/h3>&lt;p>一般在进行信息收集灯塔扫描中一般会发现这些页面
+&lt;img src="https://xx88cc66.github.io/images/swagger/1.png"
+loading="lazy"
+>
+&lt;img src="https://xx88cc66.github.io/images/swagger/2.png"
+loading="lazy"
+>
+可以直接丢进大佬写的spring_boot扫描看看有没有什么敏感文件接口
+&lt;img src="https://xx88cc66.github.io/images/swagger/3.png"
+loading="lazy"
+>
+最理想的情况是扫到heapdump 里面记录了很多登录密码 key等等
+扫到可以用deapdump_tool进行解读&lt;/p>
+&lt;h3 id="0x02-swagger-手工测试">0x02 swagger 手工测试
+&lt;/h3>&lt;p>一般扫到类似api—docx等等可以丢进apifox进行使用
+&lt;img src="https://xx88cc66.github.io/images/swagger/4.png"
+loading="lazy"
+>
+新建项目
+&lt;img src="https://xx88cc66.github.io/images/swagger/5.png"
+loading="lazy"
+>
+导入接口
+&lt;img src="https://xx88cc66.github.io/images/swagger/6.png"
+loading="lazy"
+>
+输入扫到的url
+&lt;img src="https://xx88cc66.github.io/images/swagger/7.png"
+loading="lazy"
+>
+成功导入 现在配置测试环境
+输入扫到的url地址
+&lt;img src="https://xx88cc66.github.io/images/swagger/9.png"
+loading="lazy"
+>
+&lt;img src="https://xx88cc66.github.io/images/swagger/10.png"
+loading="lazy"
+>
+可以看见接口已经可以成功调用了可以进行深挖来提高危害&lt;/p>
+&lt;h3 id="0x03-swagger-自动化测试">0x03 swagger 自动化测试
+&lt;/h3>&lt;p>点击自动化测试 添加步骤把上面的导入的接口导入进去
+&lt;img src="https://xx88cc66.github.io/images/swagger/11.png"
+loading="lazy"
+>
+&lt;img src="https://xx88cc66.github.io/images/swagger/12.png"
+loading="lazy"
+>
+然后把这些危险请求给删掉put delete 以免触碰红线
+然后配置网络代理 为127.0.0.1:8080将流量导入burp进行自动化测试
+&lt;img src="https://xx88cc66.github.io/images/swagger/13.png"
+loading="lazy"
+>
+&lt;img src="https://xx88cc66.github.io/images/swagger/14.png"
+loading="lazy"
+>&lt;/p></description></item><item><title>挖src的信息收集小技巧</title><link>https://xx88cc66.github.io/p/%E6%8C%96src%E7%9A%84%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E5%B0%8F%E6%8A%80%E5%B7%A7/</link><pubDate>Fri, 27 Dec 2024 00:00:00 +0000</pubDate><guid>https://xx88cc66.github.io/p/%E6%8C%96src%E7%9A%84%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E5%B0%8F%E6%8A%80%E5%B7%A7/</guid><description>&lt;h3 id="0一般src会给你指定的域名没有往下面找">0.一般src会给你指定的域名没有往下面找
 &lt;/h3>&lt;h3 id="1">1
 &lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
