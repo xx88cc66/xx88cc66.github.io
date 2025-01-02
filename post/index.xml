@@ -266,4 +266,24 @@ loading="lazy"
 >
 &lt;img src="https://xx88cc66.github.io/images/swagger/14.png"
 loading="lazy"
->&lt;/p></description></item></channel></rss>
+>&lt;/p></description></item><item><title>快速nuclei脚本编写</title><link>https://xx88cc66.github.io/p/%E5%BF%AB%E9%80%9Fnuclei%E8%84%9A%E6%9C%AC%E7%BC%96%E5%86%99/</link><pubDate>Fri, 27 Dec 2024 00:00:00 +0000</pubDate><guid>https://xx88cc66.github.io/p/%E5%BF%AB%E9%80%9Fnuclei%E8%84%9A%E6%9C%AC%E7%BC%96%E5%86%99/</guid><description>&lt;p>0x00
+在日常挖掘src中当你挖到一个通杀之后 为了快速寻找资产进行验证可以使用
+burp的nuclei插件来进行联动
+例如如下 我发现此接口有一个sql注入我如何快速发现其他使用该源码的站点
+有没有此接口呢
+&lt;img src="https://xx88cc66.github.io/images/nuclei/1.png"
+loading="lazy"
+>
+咱们发现他返回包有独有的特征有code等参数将他选中丢去插件里
+&lt;img src="https://xx88cc66.github.io/images/nuclei/2.png"
+loading="lazy"
+>
+&lt;img src="https://xx88cc66.github.io/images/nuclei/3.png"
+loading="lazy"
+>
+然后运行脚本即可发现我设置的危害等级info已经成功跑出来
+也可以保存到本地进行日后操作
+&lt;img src="https://xx88cc66.github.io/images/nuclei/4.png"
+loading="lazy"
+>
+当然可以多加几个参数 按照格式yaml即可&lt;/p></description></item></channel></rss>
