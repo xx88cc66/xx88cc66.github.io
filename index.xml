@@ -159,54 +159,6 @@ loading="lazy"
 &lt;p>-host&lt;/p>
 &lt;p>&lt;img src="https://xx88cc66.github.io/images/xinxi1/19.png"
 loading="lazy"
->&lt;/p></description></item><item><title>jwt身份验证加密绕过</title><link>https://xx88cc66.github.io/p/jwt%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81%E5%8A%A0%E5%AF%86%E7%BB%95%E8%BF%87/</link><pubDate>Fri, 27 Dec 2024 00:00:00 +0000</pubDate><guid>https://xx88cc66.github.io/p/jwt%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81%E5%8A%A0%E5%AF%86%E7%BB%95%E8%BF%87/</guid><description>&lt;h3 id="0x00-什么是jwt">0x00 什么是JWT：
-&lt;/h3>&lt;p>JSON 网络令牌 (JWT) 是一种标准化格式，用于在系统之间发送加密签名的 JSON 数据。它们理论上可以包含任何类型的数据，但最常用于发送有关用户的信息（“声明”），作为身份验证、会话处理和访问控制机制的一部分。
-与经典会话令牌不同，服务器需要的所有数据都存储在 JWT 本身的客户端。这使得 JWT 成为高度分布式网站的热门选择，用户需要与多个后端服务器无缝交互。
-简单理解JWT的本质就是：把用户信息通过加密后生成的一个字符串。&lt;/p>
-&lt;p>jwt分为3部分&lt;/p>
-&lt;p>HEADER：令牌头部，记录了整个令牌的类型和签名算法
-PAYLOAD：令牌负荷，记录了保存的主体信息，比如你要保存的用户信息就可以放到这里,可以减少数据库的访问。
-Signature：就是把header + payload + 密匙进行加密以后的密文数据。&lt;/p>
-&lt;h3 id="0x01-burp的jwt绕过靶场-未经验证的签名绕过-jwt-身份验证">0x01 burp的jwt绕过靶场 (未经验证的签名绕过 JWT 身份验证)：
-&lt;/h3>&lt;p>根据题目要求得知，需使用账号+密码：wiener : peter登录，后访问/admin页面，根据要求删除carlos用户即可通关。
-用系统提供的账号密码登录 为用户wiener 然后访问admin目录发现jwt密钥
-&lt;img src="https://xx88cc66.github.io/images/jwt/2.png"
-loading="lazy"
->
-首先将jwt的第三部分删掉看看对密钥的检查是否严格 可以发现重放后还是可以继续访问
-&lt;img src="https://xx88cc66.github.io/images/jwt/3.png"
-loading="lazy"
->
-复制去jwt.io 看看密钥
-&lt;img src="https://xx88cc66.github.io/images/jwt/4.png"
-loading="lazy"
->
-可以看见wiener账户在密钥中 把他改成管理员即可访问绕过jwt验证
-&lt;img src="https://xx88cc66.github.io/images/jwt/5.png"
-loading="lazy"
->
-&lt;img src="https://xx88cc66.github.io/images/jwt/6.png"
-loading="lazy"
->
-可以看见重放后已经成功绕过验证并且登陆了&lt;/p>
-&lt;h3 id="0x02-burp的jwt绕过靶场-有缺陷的签名验证绕过-jwt-身份验证">0x02 burp的jwt绕过靶场 (有缺陷的签名验证绕过 JWT 身份验证)：
-&lt;/h3>&lt;p>同第一个关一样正常登入账户密码抓包，
-按照第一关方法修改administrator账号访问 /admin 后发现，仍无法成功。
-因为在Header中，设置alg的值可以选择签名方式，可以选择HS256，即HMAC和SHA256。在某种情况下可以设置为None，即不签名，但是一般都会过滤这种危险的设置。
-将alg的值改为none 再重复第一关操作 再将第三段删掉 即可绕过
-&lt;img src="https://xx88cc66.github.io/images/jwt/7.png"
-loading="lazy"
->&lt;/p>
-&lt;h3 id="0x03-burp的jwt绕过靶场-弱签名密钥绕过-jwt-身份验证">0x03 burp的jwt绕过靶场 (：弱签名密钥绕过 JWT 身份验证)
-&lt;/h3>&lt;p>将第三段的密钥进行爆破 即可再重复第一关操作即可通过
-&lt;img src="https://xx88cc66.github.io/images/jwt/8.png"
-loading="lazy"
->
-&lt;img src="https://xx88cc66.github.io/images/jwt/9.png"
-loading="lazy"
->
-&lt;img src="https://xx88cc66.github.io/images/jwt/10.png"
-loading="lazy"
 >&lt;/p></description></item><item><title>swagger深入利用</title><link>https://xx88cc66.github.io/p/swagger%E6%B7%B1%E5%85%A5%E5%88%A9%E7%94%A8/</link><pubDate>Fri, 27 Dec 2024 00:00:00 +0000</pubDate><guid>https://xx88cc66.github.io/p/swagger%E6%B7%B1%E5%85%A5%E5%88%A9%E7%94%A8/</guid><description>&lt;h3 id="0x00-什么是swagger">0x00 什么是swagger
 &lt;/h3>&lt;p>一、什么是swagger
 Swagger 是一个规范和完整的框架，用于生成、描述、调用和可视化RESTful风格的 Web 服务。总体目标是使客户端和文件系统作为服务器以同样的速度来更新。文件的方法，参数和模型紧密集成到服务器端的代码，允许API来始终保持同步。Swagger让部署管理和使用功能强大的API变得非常简单。
@@ -286,8 +238,101 @@ loading="lazy"
 &lt;img src="https://xx88cc66.github.io/images/nuclei/4.png"
 loading="lazy"
 >
-当然可以多加几个参数 按照格式yaml即可&lt;/p></description></item><item><title>归档</title><link>https://xx88cc66.github.io/archives/</link><pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate><guid>https://xx88cc66.github.io/archives/</guid><description/></item><item><title>Archives</title><link>https://xx88cc66.github.io/archives/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://xx88cc66.github.io/archives/</guid><description/></item><item><title>Search</title><link>https://xx88cc66.github.io/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://xx88cc66.github.io/search/</guid><description/></item><item><title>关于</title><link>https://xx88cc66.github.io/%E5%85%B3%E4%BA%8E/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://xx88cc66.github.io/%E5%85%B3%E4%BA%8E/</guid><description>&lt;p>一个学习安全的菜鸡
+当然可以多加几个参数 按照格式yaml即可&lt;/p></description></item><item><title>归档</title><link>https://xx88cc66.github.io/archives/</link><pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate><guid>https://xx88cc66.github.io/archives/</guid><description/></item><item><title>Archives</title><link>https://xx88cc66.github.io/archives/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://xx88cc66.github.io/archives/</guid><description/></item><item><title>jwt身份验证加密绕过</title><link>https://xx88cc66.github.io/p/jwt%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81%E5%8A%A0%E5%AF%86%E7%BB%95%E8%BF%87/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://xx88cc66.github.io/p/jwt%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81%E5%8A%A0%E5%AF%86%E7%BB%95%E8%BF%87/</guid><description>&lt;h3 id="0x00-什么是jwt">0x00 什么是JWT：
+&lt;/h3>&lt;p>JSON 网络令牌 (JWT) 是一种标准化格式，用于在系统之间发送加密签名的 JSON 数据。它们理论上可以包含任何类型的数据，但最常用于发送有关用户的信息（“声明”），作为身份验证、会话处理和访问控制机制的一部分。
+与经典会话令牌不同，服务器需要的所有数据都存储在 JWT 本身的客户端。这使得 JWT 成为高度分布式网站的热门选择，用户需要与多个后端服务器无缝交互。
+简单理解JWT的本质就是：把用户信息通过加密后生成的一个字符串。&lt;/p>
+&lt;p>jwt分为3部分&lt;/p>
+&lt;p>HEADER：令牌头部，记录了整个令牌的类型和签名算法
+PAYLOAD：令牌负荷，记录了保存的主体信息，比如你要保存的用户信息就可以放到这里,可以减少数据库的访问。
+Signature：就是把header + payload + 密匙进行加密以后的密文数据。&lt;/p>
+&lt;h3 id="0x01-burp的jwt绕过靶场-未经验证的签名绕过-jwt-身份验证">0x01 burp的jwt绕过靶场 (未经验证的签名绕过 JWT 身份验证)：
+&lt;/h3>&lt;p>根据题目要求得知，需使用账号+密码：wiener : peter登录，后访问/admin页面，根据要求删除carlos用户即可通关。
+用系统提供的账号密码登录 为用户wiener 然后访问admin目录发现jwt密钥
+&lt;img src="https://xx88cc66.github.io/images/jwt/2.png"
+loading="lazy"
+>
+首先将jwt的第三部分删掉看看对密钥的检查是否严格 可以发现重放后还是可以继续访问
+&lt;img src="https://xx88cc66.github.io/images/jwt/3.png"
+loading="lazy"
+>
+复制去jwt.io 看看密钥
+&lt;img src="https://xx88cc66.github.io/images/jwt/4.png"
+loading="lazy"
+>
+可以看见wiener账户在密钥中 把他改成管理员即可访问绕过jwt验证
+&lt;img src="https://xx88cc66.github.io/images/jwt/5.png"
+loading="lazy"
+>
+&lt;img src="https://xx88cc66.github.io/images/jwt/6.png"
+loading="lazy"
+>
+可以看见重放后已经成功绕过验证并且登陆了&lt;/p>
+&lt;h3 id="0x02-burp的jwt绕过靶场-有缺陷的签名验证绕过-jwt-身份验证">0x02 burp的jwt绕过靶场 (有缺陷的签名验证绕过 JWT 身份验证)：
+&lt;/h3>&lt;p>同第一个关一样正常登入账户密码抓包，
+按照第一关方法修改administrator账号访问 /admin 后发现，仍无法成功。
+因为在Header中，设置alg的值可以选择签名方式，可以选择HS256，即HMAC和SHA256。在某种情况下可以设置为None，即不签名，但是一般都会过滤这种危险的设置。
+将alg的值改为none 再重复第一关操作 再将第三段删掉 即可绕过
+&lt;img src="https://xx88cc66.github.io/images/jwt/7.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="0x03-burp的jwt绕过靶场-弱签名密钥绕过-jwt-身份验证">0x03 burp的jwt绕过靶场 (：弱签名密钥绕过 JWT 身份验证)
+&lt;/h3>&lt;p>将第三段的密钥进行爆破 即可再重复第一关操作即可通过
+&lt;img src="https://xx88cc66.github.io/images/jwt/8.png"
+loading="lazy"
+>
+&lt;img src="https://xx88cc66.github.io/images/jwt/9.png"
+loading="lazy"
+>
+&lt;img src="https://xx88cc66.github.io/images/jwt/10.png"
+loading="lazy"
+>&lt;/p></description></item><item><title>Search</title><link>https://xx88cc66.github.io/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://xx88cc66.github.io/search/</guid><description/></item><item><title>关于</title><link>https://xx88cc66.github.io/%E5%85%B3%E4%BA%8E/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://xx88cc66.github.io/%E5%85%B3%E4%BA%8E/</guid><description>&lt;p>一个学习安全的菜鸡
 qq：3661629617&lt;/p>
 &lt;p>&lt;img src="https://xx88cc66.github.io/images/1/logo.png"
 loading="lazy"
->&lt;/p></description></item><item><title>搜索</title><link>https://xx88cc66.github.io/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://xx88cc66.github.io/search/</guid><description/></item></channel></rss>
+>&lt;/p></description></item><item><title>搜索</title><link>https://xx88cc66.github.io/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://xx88cc66.github.io/search/</guid><description/></item><item><title>应急响应入门实战</title><link>https://xx88cc66.github.io/p/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E5%85%A5%E9%97%A8%E5%AE%9E%E6%88%98/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://xx88cc66.github.io/p/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E5%85%A5%E9%97%A8%E5%AE%9E%E6%88%98/</guid><description>&lt;h3 id="0x00-找到日志文件放进360星图分析">0x00 找到日志文件放进360星图分析
+&lt;/h3>&lt;p>靶场问题所示百度搜索点击域名会跳转到违规网站/usr/local/tomcat8/logs
+修改config文件填写成为日志文件的存放地址 点击启动后分析完成会生成3个文件会有很详细的
+日志分析
+&lt;img src="https://xx88cc66.github.io/images/yingji/1.png"
+loading="lazy"
+>
+&lt;img src="https://xx88cc66.github.io/images/yingji/2.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="0x01-手动分析">0x01 手动分析
+&lt;/h3>&lt;p>因为案例是说点击域名会跳转到违规网站 所以直接查看首页文件index.jsp
+&lt;img src="https://xx88cc66.github.io/images/yingji/3.png"
+loading="lazy"
+>
+&lt;img src="https://xx88cc66.github.io/images/yingji/4.png"
+loading="lazy"
+>
+打开发现点开只要是百度等点开就会跳转到违规网站地址
+&lt;img src="https://xx88cc66.github.io/images/yingji/5.png"
+loading="lazy"
+>
+那么查看一下攻击者打开index.jsp的时间在排查日志即可获取攻击者ip
+&lt;img src="https://xx88cc66.github.io/images/yingji/6.png"
+loading="lazy"
+>
+&lt;img src="https://xx88cc66.github.io/images/yingji/7.png"
+loading="lazy"
+>
+&lt;img src="https://xx88cc66.github.io/images/yingji/8.png"
+loading="lazy"
+>
+获得攻击者ip ctrl+f攻击者ip
+可以发现攻击者大量请求爆破弱口令
+然后上传木马篡改首页文件&lt;/p>
+&lt;h3 id="0x01-木马排除">0x01 木马排除
+&lt;/h3>&lt;p>上传河马工具对网站目录进行扫描发现3个可以木马文件
+可以发现他是上传一个压缩包再进行解压
+&lt;img src="https://xx88cc66.github.io/images/yingji/9.png"
+loading="lazy"
+>
+最后打开扫描结果发现是哥斯拉的马子
+&lt;img src="https://xx88cc66.github.io/images/yingji/10.png"
+loading="lazy"
+>
+也可以去微步进行分析&lt;/p></description></item></channel></rss>
