@@ -290,6 +290,67 @@ loading="lazy"
 qq：3661629617&lt;/p>
 &lt;p>&lt;img src="https://xx88cc66.github.io/images/1/logo.png"
 loading="lazy"
+>&lt;/p></description></item><item><title>内网靶场实战</title><link>https://xx88cc66.github.io/p/%E5%86%85%E7%BD%91%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://xx88cc66.github.io/p/%E5%86%85%E7%BD%91%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98/</guid><description>&lt;h3 id="0x00-开局一个ip">0x00 开局一个ip
+&lt;/h3>&lt;p>发现是空白页Tscanplues
+做下信息收集扫描一下端口还有指纹
+&lt;img src="https://xx88cc66.github.io/images/neiwang/1.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="0x01-信息收集">0x01 信息收集
+&lt;/h3>&lt;p>发现端口7001
+并且带有熟悉的指纹weblogic
+&lt;img src="https://xx88cc66.github.io/images/neiwang/2.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="0x02-漏洞利用">0x02 漏洞利用
+&lt;/h3>&lt;p>直接打一波weblogic nday 通过poc探测发现存在历史漏洞
+&lt;img src="https://xx88cc66.github.io/images/neiwang/3.png"
+loading="lazy"
+>
+执行一下命令
+&lt;img src="https://xx88cc66.github.io/images/neiwang/4.png"
+loading="lazy"
+>
+发现成功执行但是估计是个很普通的用户&lt;/p>
+&lt;h3 id="0x03-上线cs">0x03 上线cs
+&lt;/h3>&lt;p>tasklist查看一下进程看看有没有杀软
+&lt;img src="https://xx88cc66.github.io/images/neiwang/9.png"
+loading="lazy"
+>
+&lt;img src="https://xx88cc66.github.io/images/neiwang/10.png"
+loading="lazy"
+>
+发现没有任何杀软进程
+直接生成一个powershell执行即可 注意这里是32位的不然会上线失败
+&lt;img src="https://xx88cc66.github.io/images/neiwang/6.png"
+loading="lazy"
+>
+&lt;img src="https://xx88cc66.github.io/images/neiwang/7.png"
+loading="lazy"
+>
+&lt;img src="https://xx88cc66.github.io/images/neiwang/8.png"
+loading="lazy"
+>
+但是用户权限及其低&lt;/p>
+&lt;h3 id="0x04-提权">0x04 提权
+&lt;/h3>&lt;p>systeminfo查看一下服务器信息 发现是windows2008的系统
+&lt;img src="https://xx88cc66.github.io/images/neiwang/5.png"
+loading="lazy"
+>
+复制syesteminfo补丁信息 取搜索发现有很多可执行提权的历史漏洞
+&lt;img src="https://xx88cc66.github.io/images/neiwang/11.png"
+loading="lazy"
+>
+&lt;img src="https://xx88cc66.github.io/images/neiwang/12.png"
+loading="lazy"
+>
+那么这里直接使用ms14-058进行提权直接用插件即可
+&lt;img src="https://xx88cc66.github.io/images/neiwang/13.png"
+loading="lazy"
+>
+ok 直接system权限
+&lt;img src="https://xx88cc66.github.io/images/neiwang/14.png"
+loading="lazy"
 >&lt;/p></description></item><item><title>搜索</title><link>https://xx88cc66.github.io/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://xx88cc66.github.io/search/</guid><description/></item><item><title>应急响应入门实战</title><link>https://xx88cc66.github.io/p/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E5%85%A5%E9%97%A8%E5%AE%9E%E6%88%98/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://xx88cc66.github.io/p/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E5%85%A5%E9%97%A8%E5%AE%9E%E6%88%98/</guid><description>&lt;h3 id="0x00-找到日志文件放进360星图分析">0x00 找到日志文件放进360星图分析
 &lt;/h3>&lt;p>靶场问题所示百度搜索点击域名会跳转到违规网站/usr/local/tomcat8/logs
 修改config文件填写成为日志文件的存放地址 点击启动后分析完成会生成3个文件会有很详细的
