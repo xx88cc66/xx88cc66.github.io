@@ -2,7 +2,44 @@
 qq：3661629617&lt;/p>
 &lt;p>&lt;img src="https://xx88cc66.github.io/images/1/logo.png"
 loading="lazy"
->&lt;/p></description></item><item><title>搜索</title><link>https://xx88cc66.github.io/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://xx88cc66.github.io/search/</guid><description/></item><item><title>一次渗透测试实战</title><link>https://xx88cc66.github.io/p/%E4%B8%80%E6%AC%A1%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AE%9E%E6%88%98/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://xx88cc66.github.io/p/%E4%B8%80%E6%AC%A1%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AE%9E%E6%88%98/</guid><description>&lt;h3 id="0x00-开局一个ip">0x00 开局一个ip
+>&lt;/p></description></item><item><title>搜索</title><link>https://xx88cc66.github.io/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://xx88cc66.github.io/search/</guid><description/></item><item><title>一次对springboot shiro框架实战</title><link>https://xx88cc66.github.io/p/%E4%B8%80%E6%AC%A1%E5%AF%B9springboot-shiro%E6%A1%86%E6%9E%B6%E5%AE%9E%E6%88%98/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://xx88cc66.github.io/p/%E4%B8%80%E6%AC%A1%E5%AF%B9springboot-shiro%E6%A1%86%E6%9E%B6%E5%AE%9E%E6%88%98/</guid><description>&lt;h3 id="0x00-开局一个ip">0x00 开局一个ip
+&lt;/h3>&lt;p>信息收集一下 发现是springboot框架
+&lt;img src="https://xx88cc66.github.io/images/shiro/1.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="0x01-漏洞利用">0x01 漏洞利用
+&lt;/h3>&lt;p>直接上工具 发现发现存在heapdemp
+&lt;img src="https://xx88cc66.github.io/images/shiro/2.png"
+loading="lazy"
+>
+下载heapdump 并且解密发现shiro key 加密方式为aes
+&lt;img src="https://xx88cc66.github.io/images/shiro/3.png"
+loading="lazy"
+>
+验证一下密钥 发现是正确的
+&lt;img src="https://xx88cc66.github.io/images/shiro/4.png"
+loading="lazy"
+>
+爆破一下利用链
+&lt;img src="https://xx88cc66.github.io/images/shiro/5.png"
+loading="lazy"
+>
+发现成功执行命令
+&lt;img src="https://xx88cc66.github.io/images/shiro/6.png"
+loading="lazy"
+>
+直接注入内存马
+&lt;img src="https://xx88cc66.github.io/images/shiro/7.png"
+loading="lazy"
+>
+冰蝎连接一下 最后直接上线vshell
+&lt;img src="https://xx88cc66.github.io/images/shiro/8.png"
+loading="lazy"
+>
+拿下服务器
+&lt;img src="https://xx88cc66.github.io/images/shiro/9.png"
+loading="lazy"
+>&lt;/p></description></item><item><title>一次渗透测试实战</title><link>https://xx88cc66.github.io/p/%E4%B8%80%E6%AC%A1%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AE%9E%E6%88%98/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://xx88cc66.github.io/p/%E4%B8%80%E6%AC%A1%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AE%9E%E6%88%98/</guid><description>&lt;h3 id="0x00-开局一个ip">0x00 开局一个ip
 &lt;/h3>&lt;p>发现是空白页Tscanplues
 做下信息收集扫描一下端口还有指纹
 &lt;img src="https://xx88cc66.github.io/images/neiwang/1.png"
